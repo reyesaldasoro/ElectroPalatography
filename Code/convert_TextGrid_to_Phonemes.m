@@ -1,4 +1,4 @@
-function     [Phonemes,numPhonemes] = convert_TextGrid_to_Phonemes(dataIn)
+function     [Phonemes,numPhonemes,Words,numWords] = convert_TextGrid_to_Phonemes(dataIn)
 
 
 % File is TextGrid Format, it can have multiple IntervalTiers for words,

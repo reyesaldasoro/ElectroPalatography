@@ -1,4 +1,4 @@
-function [Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File)
+function [EPG_parameters] = interpretLabelledPhonemes(currentLAB_File,EPG_parameters)
 
 if strcmp(currentLAB_File(end),'b')
     % File is lab format
@@ -100,10 +100,15 @@ else
     % File not known
     disp('File name does not finish with "b" for .lab nor "d" for TextGrid.')
     disp('Please try again')
-    Phonemes =[];
-    numPhonemes = 0;
+    EPG_parameters =[];
+    return;
     
     
     
 end
 %%
+
+EPG_parameters.LAB          = Phonemes;
+EPG_parameters.numPhonemes  = numPhonemes;
+EPG_parameters.Words        = Words;
+EPG_parameters.numWords     = numWords;
