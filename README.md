@@ -62,4 +62,8 @@ size = 1 item []:
 
 2) a folder, all the .lab files in the folder will be converted to TextGrid</p>
 
+
+<p> The code requires one intermediate function to convert the lab file to a MATLAB Cell, this can be used separately to process phonemes in MATLAB. There is a parallel function to read TextGrid and convert to a MATLAB Cell.
+
+</p>
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
