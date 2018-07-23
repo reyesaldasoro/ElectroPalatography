@@ -6,11 +6,17 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 
 <p>In experiments of phonetics, there are different formats in which the phonemes can be segmented. This is typically done on a small phrase such as "the chalk, the soup, the sugar". There are different formats in which these are recorded, one of them is a file with extension .lab (for labels) which has a simple format with start time-stop time-phoneme:</p>
 
-<p>0 0.25 sil
+<p>
+0 0.25 sil
+
 0.25 0.28 breath
+
 0.28 0.35 sil
+
 0.35 0.42 dh
+
 0.42 0.5 i
+
 </p>
 
 <p>See for instance the data base of MOCHA TIMIT (<a href="http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html">http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html</a>)</p>
@@ -20,11 +26,16 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 
 <p>
 File type = "ooTextFile"
+
 Object class = "TextGrid"
 
-xmin = 0 xmax = 3.968
+xmin = 0
+xmax = 3.968
+
 tiers? exists
+
 size = 1 item []:
+
      item [1]:
               class = "IntervalTier"
               name = "phonemes"
