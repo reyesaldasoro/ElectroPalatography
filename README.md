@@ -1,7 +1,7 @@
 # ElectroPalatography
 A repository of useful routines that can be used in Phonetics and Electropalatography
 
-<h1>Convert LAB format to TextGrid Format</h1>
+<h2>Convert LAB format to TextGrid Format</h2>
 
 
 <p>In experiments of phonetics, there are different formats in which the phonemes can be segmented. This is typically done on a small phrase such as "the chalk, the soup, the sugar". There are different formats in which these are recorded, one of them is a file with extension .lab (for labels) which has a simple format with start time-stop time-phoneme:</p>
@@ -60,11 +60,11 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 </p>
 
-<h1>Convert LAB or TextGrid to a MATLAB Cell </h1>
+<h2>Convert LAB or TextGrid to a MATLAB Cell </h2>
 <p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file, and calls the correct function.
 
 <pre class="codeinput">
-[Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File;
+[Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File);
 </pre>
 
 <p> For example:</p>
