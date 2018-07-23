@@ -94,6 +94,47 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 </pre>
 
+<h2>Read the audio file </h2>
+<p>The files for electropalatography are saved separately into several files:</p>
+
+* .wav contains the audio file as a wave, in most cases the sample rate is also available from the same file
+
+* .epg contains the electropalatography data, contacts with the electrodes of a palate
+
+* .lab contains the labelled phonemes
+
+* .TextGrid same as the  .lab, but with the format of PRAAT
+
+
+<p> To read the audio file and automatically calculate some important parameters use the file readAudioFile like this:
+
+<pre class="codeinput">
+>> currentWAV_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
+>> [EPG_parameters]   = readAudioFile (currentLAB_File);
+>> disp(EPG_parameters)
+     audioWave: [35495×1 double]
+    sampleRate: 16000
+    numSamples: 35495
+    timeVector: [1×35495 double]
+     totalTime: 2.2184
+     maxSignal: 0.4084
+     minSignal: -0.4106
+
+>> sound(EPG_parameters.audioWave,EPG_parameters.sampleRate)
+</pre>
+
+The last line will reproduce the sound.
+
+
+
+sdf
+
+
+
+
+sdf
+
+
 
 
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
