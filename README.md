@@ -64,6 +64,36 @@ TextGrid = Lab_to_TextGrid(dataIn);
 <p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file, and calls the correct function.
 
 <pre class="codeinput">
-[Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File)
+[Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File;
 </pre>
+
+<p> For example:</p>
+
+<pre class="codeinput">
+>> currentLAB_File = 'MOCHA/fsew0_v1.1/fsew0_001.lab'
+>> [Phonemes,numPhonemes] = interpretLabelledPhonemes(currentLAB_File);
+>> disp(Phonemes)
+    [     0]    [0.2500]    'sil'   
+    [0.2500]    [0.2800]    'breath'
+    [0.2800]    [0.3500]    'sil'   
+    [0.3500]    [0.4200]    'dh'    
+    [0.4200]    [0.5000]    'i'     
+    [0.5000]    [0.6100]    's'     
+    [0.6100]    [0.6400]    'w'     
+    [0.6400]    [0.6800]    '@'     
+    [0.6800]    [0.7500]    'z'     
+    [0.7500]    [0.9200]    'ii'    
+    [0.9200]    [0.9800]    'z'     
+    [0.9800]    [1.1100]    'iy'    
+    [1.1100]    [1.1800]    'f'     
+    [1.1800]    [1.2500]    '@'     
+    [1.2500]    [1.3500]    'r'     
+    [1.3500]    [1.4200]    'uh'    
+    [1.4200]    [1.6700]    's'     
+    [1.6700]    [2.2000]    'sil'   
+
+</pre>
+
+
+
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>

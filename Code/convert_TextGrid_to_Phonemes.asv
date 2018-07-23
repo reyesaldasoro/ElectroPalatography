@@ -78,7 +78,7 @@ if exist('PositionWords','var')
         numWords                = size(Words,1);
     else
         numWords                = 0;
-        Words                   = {''};
+        Words                   = {''}
     end
 else
     numWords                = 0;

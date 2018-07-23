@@ -19,9 +19,6 @@ if strcmp(currentLAB_File(end),'b')
 %         Phonemes{k,3}           = (currLine(placesSpace(2)+1:end));
 %     end
     %%
-    % No words are extracted from a LAB file
-    Words=[];
-    numWords = 0;
 elseif strcmp(currentLAB_File(end),'d')
     [Phonemes,numPhonemes] = convert_TextGrid_to_Phonemes(currentLAB_File);
 %     % File is TextGrid Format, it can have multiple IntervalTiers for words,
@@ -102,3 +99,17 @@ else
     
 end
 %%
+if ~exist('PositionWords','var')
+    |~isempty(PositionWords)
+    numWords                = size(Words,1);
+else
+    numWords                = 0;
+    Words                   = {''};
+end
+
+if ~isempty(PositionPhonemes)
+    numPhonemes             = size(Phonemes,1);
+else
+    numPhonemes             = 0;
+    Phonemes                = {''};
+end
