@@ -64,7 +64,7 @@ TextGrid = Lab_to_TextGrid(dataIn);
 <p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file, and calls the correct function.
 
 <pre class="codeinput">
-[EPG_parameters,Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File,EPG_parameters);
+[EPG_parameters] = interpretLabelledPhonemes(currentLAB_File,EPG_parameters);
 </pre>
 
 <p> For example:</p>
@@ -131,16 +131,43 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 The last line will reproduce the sound.
 
+<h2>Read the ElectroPalatography data  </h2>
+<p>
+The process of reading the ElectroPalatography data from an EPG file requires several files, readPalatogram.m, EPG_to_Palatogram.m, assymetry_projection.m and EPB_Boxes.mat. These are necessary as many things are calculated in this step. Among them the whole time frame of the palatograms and their asymmetry calculation, the asymmetry index (i.e. how asymmetric is every EPG recorded). It is recommended to read the audio file previously as the sample rate is necessary for some calculations.
+</p>
 
 
-sdf
+<pre class="codeinput">
+>> currentLAB_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
+>> currentEPG_File = 'MOCHA/fsew0_v1.1/fsew0_001.epg';
+>> [EPG_parameters]   = readAudioFile (currentLAB_File);
+>> EPG_parameters = readPalatogram(currentEPG_File,EPG_parameters);
+>> disp(EPG_parameters)
+                  audioWave: [35495×1 double]
+                 sampleRate: 16000
+                 numSamples: 35495
+                 timeVector: [1×35495 double]
+                  totalTime: 2.2184
+                  maxSignal: 0.4084
+                  minSignal: -0.4106
+                  FrameRate: 200
+                  numImages: 388
+                       rows: 300
+                       cols: 240
+                       levs: 1
+              EPGtimeVector: [1×388 double]
+               EPGtotalTime: 1.9400
+                   stepSamp: 80
+                current_EPG: 'MOCHA/fsew0_v1.1/fsew0_001.epg'
+                          v: []
+                  asymIndex: [388×3 double]
+                 Palatogram: [300×240×1×388 double]
+             PalatogramAsym: [300×240×3×388 double]
+        activeElectrodesCum: [300×240 double]
+    asymmetricElectrodesCum: [300×240 double]
 
-
-
-
-sdf
-
-
+>>
+</pre>
 
 
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
