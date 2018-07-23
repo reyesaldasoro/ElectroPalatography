@@ -59,4 +59,11 @@ TextGrid = Lab_to_TextGrid(dataIn);
 <p> The code requires one intermediate function to convert the lab file to a MATLAB Cell, this can be used separately to process phonemes in MATLAB. There is a parallel function to read TextGrid and convert to a MATLAB Cell.
 
 </p>
+
+<h1>Convert LAB or TextGrid to a MATLAB Cell </h1>
+<p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file, and calls the correct function.
+
+<pre class="codeinput">
+[Phonemes,numPhonemes,Words,numWords] = interpretLabelledPhonemes(currentLAB_File)
+</pre>
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
