@@ -98,6 +98,11 @@ elseif strcmp(currentLAB_File(end),'d')
     %%
 else
     % File not known
+    disp('File name does not finish with "b" for .lab nor "d" for TextGrid.')
+    disp('Please try again')
+    Phonemes =[];
+    numPhonemes = 0;
+    
     
     
 end
