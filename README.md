@@ -8,15 +8,10 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 
 <pre class="codeinput">
 0 0.25 sil
-
 0.25 0.28 breath
-
 0.28 0.35 sil
-
 0.35 0.42 dh
-
 0.42 0.5 i
-
 </pre>
 
 <p>See for instance the data base of MOCHA TIMIT (<a href="http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html">http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html</a>)</p>
@@ -26,16 +21,12 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 
 <pre class="codeinput">
 File type = "ooTextFile"
-
 Object class = "TextGrid"
 
 xmin = 0
 xmax = 3.968
-
 tiers? exists
-
 size = 1 item []:
-
      item [1]:
               class = "IntervalTier"
               name = "phonemes"
