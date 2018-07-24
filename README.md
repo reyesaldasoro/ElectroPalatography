@@ -14,6 +14,7 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 [Display audio signal with Phonemes](#displaySoundWave)   
 [Display of the asymmetry index](#displayAsymmetryIndex)   
 [Display of the Spectrogram](#Spectrogram)   
+[Display of the Palatogram](#Palatogram)   
 
 
 
@@ -408,6 +409,33 @@ Again notice that Spectrogram finishes some time before the sound wave. This is 
 
 </p>
 
+
+
+
+
+<a name="Palatogram"/>
+<h2>Display of the Palatogram</h2>
+</a>
+
+
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_09.png)
+
+
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_10.png)
+
+
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_11.png)
+
+
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_12.png)
+
+
+
+![Audio with asymmetry](Figures/PalatogramAnimation.gif)
 
 
 
