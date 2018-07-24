@@ -1,7 +1,26 @@
 # ElectroPalatography
 A repository of useful routines that can be used in Phonetics and Electropalatography
 
+
+
+##### Table of Contents  
+
+[Convert LAB format to TextGrid Format](#LabTextGrid)  
+[Convert LAB or TextGrid to a MATLAB Cell](#LABTextGridCell)   
+[Read the audio file](#readAudioFile)   
+[Read the ElectroPalatography data](#readPalatogram)   
+[Short-Time Fourier Analysis](#STFA)   
+[Visualisation](#Visualisation)   
+[Display audio signal with Phonemes](#displaySoundWave)   
+[Display of the asymmetry index](#displayAsymmetryIndex)   
+[Display of the Spectrogram](#Spectrogram)   
+
+
+
+<a name="LabTextGrid"/>
 <h2>Convert LAB format to TextGrid Format</h2>
+</a>
+
 
 
 <p>In experiments of phonetics, there are different formats in which the phonemes can be segmented. This is typically done on a small phrase such as "the chalk, the soup, the sugar". There are different formats in which these are recorded, one of them is a file with extension .lab (for labels) which has a simple format with start time-stop time-phoneme:</p>
@@ -60,7 +79,12 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 </p>
 
+<a name="LABTextGridCell"/>
 <h2>Convert LAB or TextGrid to a MATLAB Cell </h2>
+</a>
+
+
+
 <p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file (it can end in "d" for TextGrid or "b" for lab), and calls the correct function, either convert_LAB_to_Phonemes.m or convert_TextGrid_to_Phonemes.
 
 <pre class="codeinput">
@@ -100,7 +124,10 @@ TextGrid = Lab_to_TextGrid(dataIn);
     [1.6700]    [2.2000]    'sil'  
 </pre>
 
+<a name="readAudioFile"/>
 <h2>Read the audio file </h2>
+</a>
+
 <p>The files for electropalatography are saved separately into several files:</p>
 
 * .wav contains the audio file as a wave, in most cases the sample rate is also available from the same file
@@ -131,7 +158,11 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 The last line will reproduce the sound.
 
+<a name="readPalatogram"/>
 <h2>Read the ElectroPalatography data  </h2>
+</a>
+
+
 <p>
 The process of reading the ElectroPalatography data from an EPG file requires several files, readPalatogram.m, EPG_to_Palatogram.m, assymetry_projection.m and EPB_Boxes.mat. These are necessary as many things are calculated in this step. Among them the whole time frame of the palatograms and their asymmetry calculation, the asymmetry index (i.e. how asymmetric is every EPG recorded). It is recommended to read the audio file previously as the sample rate is necessary for some calculations.
 </p>
@@ -169,7 +200,11 @@ The process of reading the ElectroPalatography data from an EPG file requires se
 >>
 </pre>
 
+<a name="STFA"/>
 <h2>Short-Time Fourier Analysis  </h2>
+</a>
+
+
 <p>
 To calculate the Short-Time Fourier Transform of the audio signal, together with a series of parameters, the function shortTimeFourierAnalysis is used in the following way:
 
@@ -223,7 +258,12 @@ To calculate the Short-Time Fourier Transform of the audio signal, together with
 
 <p> As you can see, all the parameters are saved in a single variable; EPG_parameters.</p>
 
+<a name="Visualisation"/>
 <h1> Visualisation </h1>
+</a>
+
+
+
 
 <p>The variable EPG_parameters contains all that is required to perform a series of calculations and visualisations of the sound. The variables can be accessed directly, for instance:</p>
 
@@ -262,7 +302,11 @@ Notice that the Spectrogram is not callibrated.
 <p>However, there are several specialised tools in this repository, which are described below.</p>
 
 
+<a name="displaySoundWave"/>
 <h3> Display audio signal with Phonemes </h3>
+</a>
+
+
 
 <p> The function displaySoundWave.m will display the audio signal and will embed the
 phonemes.</p>
@@ -300,7 +344,14 @@ displaySoundWave(EPG_parameters,h1);
 
 The use of the handles will become more clear with subsequent examples.
 
+
+
+
+<a name="displayAsymmetryIndex"/>
 <h3> Display of the asymmetry index </h3>
+</a>
+
+
 
 
 <p>
@@ -326,8 +377,11 @@ Notice that the asymmetry index finishes some time before the sound wave, this i
 </p>
 
 
-
+<a name="Spectrogram"/>
 <h3> Display of the Spectrogram </h3>
+</a>
+
+
 
 
 <p>
