@@ -12,7 +12,8 @@ else
 end
 
 plot(EPG_parameters.timeVector, EPG_parameters.audioWave(:,1));
-ylabel('Sound','fontsize',16)
+ylabel('Sound','fontsize',14)
+xlabel('Time (s)','fontsize',14)
 handleAxis.YLim             = [EPG_parameters.minSound EPG_parameters.maxSound ];
 grid on
 addPhonemes;

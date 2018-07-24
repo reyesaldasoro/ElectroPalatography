@@ -257,6 +257,8 @@ imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
 
 ![Spectrogram ](Figures/Manual_LabToTextGrid2_04.png)
 
+Notice that the Spectrogram is not callibrated.
+
 <p>However, there are several specialised tools in this repository, which are described below.</p>
 
 
@@ -296,7 +298,7 @@ displaySoundWave(EPG_parameters,h1);
 ![Audio with Phonemes](Figures/Manual_LabToTextGrid2_06.png)
 
 
-The use of the handles will become more clear with subsequent examples
+The use of the handles will become more clear with subsequent examples.
 
 <h3> Display of the asymmetry index </h3>
 
@@ -322,6 +324,38 @@ Notice that the asymmetry index finishes some time before the sound wave, this i
 
 
 </p>
+
+
+
+<h3> Display of the Spectrogram </h3>
+
+
+<p>
+The Spectrogram contains the frequency of short-time windows. This corresponds to the Fourier Transform of the signal for the window. Other ways to display the Fourier signal will be added below. The function to display the Spectrogram is displaySpectrogram. This can be combined as before:
+
+</p>
+<pre class="codeinput">
+figure
+h1 = subplot(311);
+displaySoundWave(EPG_parameters,h1);
+h2 = subplot(312);
+displayAsymmetryIndex(EPG_parameters,h2);
+h3 = subplot(313);
+displaySpectrogram(EPG_parameters,h3);
+</pre>
+
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_08.png)
+
+
+<p>
+Again notice that Spectrogram finishes some time before the sound wave. This is done to be able to correlate the spectra with the palatograms.
+
+
+</p>
+
+
+
 
 
 <p>

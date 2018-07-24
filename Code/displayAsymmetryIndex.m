@@ -15,5 +15,6 @@ plot(EPG_parameters.EPGtimeVector,EPG_parameters.asymIndex(:,1:2),'-o')
 grid on
 axis tight
 handleAxis.XLim             = [0 EPG_parameters.totalTime ];
-ylabel('Asymmetry','fontsize',16)
+ylabel('Asymmetry','fontsize',14)
+xlabel('Time (s)','fontsize',14)
 
