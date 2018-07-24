@@ -169,5 +169,66 @@ The process of reading the ElectroPalatography data from an EPG file requires se
 >>
 </pre>
 
+<h2>Short-Time Fourier Analysis  </h2>
+<p>
+To calculate the Short-Time Fourier Transform of the audio signal, together with a series of parameters, the function shortTimeFourierAnalysis is used in the following way:
+
+
+<pre class="codeinput">
+
+>> EPG_parameters=shortTimeFourierAnalysis(EPG_parameters);
+>> disp(EPG_parameters)
+                  audioWave: [35495×1 double]
+                 sampleRate: 16000
+                 numSamples: 35495
+                 timeVector: [1×35495 double]
+                  totalTime: 2.2184
+                  maxSignal: 0.4084
+                  minSignal: -0.4106
+                  FrameRate: 200
+                  numImages: 388
+                       rows: 300
+                       cols: 240
+                       levs: 1
+              EPGtimeVector: [1×388 double]
+               EPGtotalTime: 1.9400
+                   stepSamp: 80
+                current_EPG: 'MOCHA/fsew0_v1.1/fsew0_001.epg'
+                          v: []
+                  asymIndex: [388×3 double]
+                 Palatogram: [300×240×1×388 double]
+             PalatogramAsym: [300×240×3×388 double]
+        activeElectrodesCum: [300×240 double]
+    asymmetricElectrodesCum: [300×240 double]
+               lengthWindow: 0.0050
+        timeTickVectorSound: [0 16000 32000]
+       timeTickVectorSoundL: [0 1 2]
+      timeTickVectorWindowL: [0 1 2 3 4 5]
+       timeTickVectorWindow: [1 16.8000 32.6000 48.4000 64.2000 80]
+     timeTickVectorSpectrum: [1 201]
+    timeTickVectorSpectrumL: [0 1]
+             freqTickVector: [8 16 24 32 40]
+            freqTickVectorL: [1400 3000 4600 6200 7800]
+                   maxSound: 0.3267
+                   minSound: -0.3284
+                maxSpectrum: 1.7651
+                minSpectrum: 1.4185e-05
+                  tempSound: [80×388 double]
+               tempSpectrum: [40×388 double]
+             tempTimeVector: [80×388 double]
+
+>>
+
+</pre>
+
+<p> As you can see, all the parameters are saved in a single variable; EPG_parameters.</p>
+
+<h1> Visualisation </h1>
+
+<h3> Display audio signal with Phonemes </h3>
+
+
+
+
 
 <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
