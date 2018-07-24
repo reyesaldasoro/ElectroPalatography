@@ -240,6 +240,7 @@ imagesc(EPG_parameters.PalatogramAsym(:,:,:,1))
 </pre>
 
 The Asymmetry index along time:
+
 ![Asymmetric Palatogram](Figures/Manual_LabToTextGrid2_02.png)
 
 A montage of the first 130 palatograms:
@@ -259,10 +260,53 @@ imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
 <p>However, there are several specialised tools in this repository, which are described below.</p>
 
 
-
-
-
 <h3> Display audio signal with Phonemes </h3>
+
+<p> The function displaySoundWave.m will display the audio signal and will embed the
+phonemes.</p>
+
+
+<pre class="codeinput">
+displaySoundWave(EPG_parameters);
+</pre>
+
+![Audio with Phonemes](Figures/Manual_LabToTextGrid2_05.png)
+<p>
+The display of the phonemes requires an extra function called addPhonemes, which draws vertical lines at the beginning of each phoneme and then the phoneme as listed in
+either the lab or TextGrid file. Silence and breath are displayed in gray and blue, whilst
+the phonemes themselves are displayed in black, and are positioned alternating positions
+up and down for clarity as they sometimes overlap.
+</p>
+
+<p>
+Alternatively, if you want to create a figure with several plots in it,
+you can select the subplots and pass the handles as an input argument.
+For example:</p>
+
+<pre class="codeinput">
+
+figure
+h1 = subplot(211);
+h2 = subplot(212);
+imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
+displaySoundWave(EPG_parameters,h1);
+</pre>
+
+![Audio with Phonemes](Figures/Manual_LabToTextGrid2_06.png)
+
+
+<p>
+</p>
+
+
+<p>
+</p>
+
+
+<p>
+</p>
+
+
 
 
 

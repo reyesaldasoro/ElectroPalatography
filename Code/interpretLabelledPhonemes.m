@@ -108,7 +108,7 @@ else
 end
 %%
 
-EPG_parameters.LAB          = Phonemes;
+EPG_parameters.Phonemes     = Phonemes;
 EPG_parameters.numPhonemes  = numPhonemes;
 EPG_parameters.Words        = Words;
 EPG_parameters.numWords     = numWords;
