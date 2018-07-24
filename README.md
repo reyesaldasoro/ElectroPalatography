@@ -313,6 +313,10 @@ h2 = subplot(212);
 displayAsymmetryIndex(EPG_parameters,h2);
 </pre>
 
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_07.png)
+
+
 <p>
 Notice that the asymmetry index finishes some time before the sound wave, this is due to the time the palatograms are recorded and these can be stopped some time before the sound wave finishes.
 
