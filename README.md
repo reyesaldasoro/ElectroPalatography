@@ -417,22 +417,48 @@ Again notice that Spectrogram finishes some time before the sound wave. This is 
 <h2>Display of the Palatogram</h2>
 </a>
 
+To visualise the palatograms, there are several options. If you are interested in a particular time point, you can pass the number as a second input argument to the function displayPalatogram:
 
+<pre class="codeinput">
+displayPalatogram(EPG_parameters,1);
+</pre>
+![Palatogram1](Figures/Manual_LabToTextGrid2_09.png)
+Again, it is possible to have several plots in a single figure using handles:
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_09.png)
+<pre class="codeinput">
+figure
+h1 = subplot(131);
+h2 = subplot(132);
+h3 = subplot(133);
+displayPalatogram(EPG_parameters,1,h1);
+displayPalatogram(EPG_parameters,20,h2);
+displayPalatogram(EPG_parameters,388,h3);
+</pre>
+![Palatogram1](Figures/Manual_LabToTextGrid2_08B.png)
 
+The activation is colour coded: white is used when electrodes on both sides are activated simultaneously. When only one side is activated, the electrode is displayed on cyan or magenta.
 
+To visualise the cumulative activation over all time points, there are two options. First, is the accumulation of all activations:
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_10.png)
-
-
-
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_11.png)
-
-
+<pre class="codeinput">
+displayPalatogram(EPG_parameters,-1);
+</pre>
 
 ![Audio with asymmetry](Figures/Manual_LabToTextGrid2_12.png)
 
+Second, is the accumulation of only the asymmetric activations, that is, the symmetric cases are discarded:
+
+<pre class="codeinput">
+displayPalatogram(EPG_parameters,-2);
+</pre>
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_11.png)
+
+Finally, to visualise all activations sequentially, use the second argument with value -3:
+
+<pre class="codeinput">
+displayPalatogram(EPG_parameters,-3);
+</pre>
 
 
 ![Audio with asymmetry](Figures/PalatogramAnimation.gif)
