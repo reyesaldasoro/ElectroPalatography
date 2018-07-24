@@ -1,4 +1,4 @@
-function handleAxis = displaySoundWave(EPG_parameters,handleAxis)
+function handleAxis = displayAsymmetryIndex(EPG_parameters,handleAxis)
 
 % The function can display the signal in a predefined axis (for multiple
 % plots in a single figure) or in a new figure (default if no argument is
@@ -11,9 +11,9 @@ else
     axes(handleAxis)
 end
 
-plot(EPG_parameters.timeVector, EPG_parameters.audioWave(:,1));
-ylabel('Sound','fontsize',16)
-handleAxis.YLim             = [EPG_parameters.minSound EPG_parameters.maxSound ];
+plot(EPG_parameters.EPGtimeVector,EPG_parameters.asymIndex(:,1:2),'-o')
 grid on
-addPhonemes;
+axis tight
 handleAxis.XLim             = [0 EPG_parameters.totalTime ];
+ylabel('Asymmetry','fontsize',16)
+

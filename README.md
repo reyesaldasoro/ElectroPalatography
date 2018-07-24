@@ -292,14 +292,31 @@ imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
 displaySoundWave(EPG_parameters,h1);
 </pre>
 
+
 ![Audio with Phonemes](Figures/Manual_LabToTextGrid2_06.png)
 
 
+The use of the handles will become more clear with subsequent examples
+
+<h3> Display of the asymmetry index </h3>
+
+
 <p>
+The asymmetry index contains the number of activations that happen on one side of the palate independent of the other side. To display the asymmetry index, use the function displayAsymmetryIndex. This can be combined with the sound wave in the following way:
+
 </p>
-
+<pre class="codeinput">
+figure
+h1 = subplot(211);
+displaySoundWave(EPG_parameters,h1);
+h2 = subplot(212);
+displayAsymmetryIndex(EPG_parameters,h2);
+</pre>
 
 <p>
+Notice that the asymmetry index finishes some time before the sound wave, this is due to the time the palatograms are recorded and these can be stopped some time before the sound wave finishes.
+
+
 </p>
 
 
