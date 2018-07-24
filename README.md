@@ -434,6 +434,8 @@ displayPalatogram(EPG_parameters,1,h1);
 displayPalatogram(EPG_parameters,20,h2);
 displayPalatogram(EPG_parameters,388,h3);
 </pre>
+
+
 ![Palatogram1](Figures/Manual_LabToTextGrid2_08B.png)
 
 The activation is colour coded: white is used when electrodes on both sides are activated simultaneously. When only one side is activated, the electrode is displayed on cyan or magenta.
