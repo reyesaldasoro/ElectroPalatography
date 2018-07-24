@@ -227,6 +227,8 @@ To calculate the Short-Time Fourier Transform of the audio signal, together with
 
 <p>The variable EPG_parameters contains all that is required to perform a series of calculations and visualisations of the sound. The variables can be accessed directly, for instance:</p>
 
+ The audio signal:
+
 <pre class="codeinput">
 plot(EPG_parameters.audioWave)
 </pre>
@@ -237,13 +239,22 @@ plot(EPG_parameters.audioWave)
 imagesc(EPG_parameters.PalatogramAsym(:,:,:,1))
 </pre>
 
+The Asymmetry index along time:
 ![Asymmetric Palatogram](Figures/Manual_LabToTextGrid2_02.png)
 
+A montage of the first 130 palatograms:
 <pre class="codeinput">
 montage(EPG_parameters.PalatogramAsym(:,:,:,1:130))
 </pre>
 
 ![Montage of palatograms ](Figures/Manual_LabToTextGrid2_03.png)
+
+Spectrogram of the audio signal:
+<pre class="codeinput">
+imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
+</pre>
+
+![Spectrogram ](Figures/Manual_LabToTextGrid2_04.png)
 
 <p>However, there are several specialised tools in this repository, which are described below.</p>
 
