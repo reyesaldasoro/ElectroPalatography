@@ -61,7 +61,7 @@ TextGrid = Lab_to_TextGrid(dataIn);
 </p>
 
 <h2>Convert LAB or TextGrid to a MATLAB Cell </h2>
-<p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file, and calls the correct function.
+<p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file (it can end in "d" for TextGrid or "b" for lab), and calls the correct function, either convert_LAB_to_Phonemes.m or convert_TextGrid_to_Phonemes.
 
 <pre class="codeinput">
 [EPG_parameters] = interpretLabelledPhonemes(currentLAB_File,EPG_parameters);
