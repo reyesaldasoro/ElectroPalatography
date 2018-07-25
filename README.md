@@ -410,8 +410,69 @@ Again notice that Spectrogram finishes some time before the sound wave. This is 
 </p>
 
 
+<a name="Titles"/>
+<h2>Add Titles to the Plots</h2>
+</a>
+
+If you want to add titles to a figure you can do this directly with the handles, the handle of each plot has a field called "Title" with several properties, among them the "String" and the "FontSize"
+
+<pre class="codeinput">
+figure
+h1 = subplot(311);
+displaySoundWave(EPG_parameters,h1);
+h2 = subplot(312);
+displayAsymmetryIndex(EPG_parameters,h2);
+h3 = subplot(313);
+displaySpectrogram(EPG_parameters,h3);
+
+h1.Title.String     = 'This was easy for us';
+h1.Title.FontSize   = 18;
+</pre>
 
 
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_09B.png)
+
+All the phrases of the MOCHA TIMIT data base, are saved in the variable allPhrases.mat.
+
+<pre class="codeinput">
+load allPhrases
+disp(allPhrases)
+'001. This was easy for us.'
+'002. Is this seesaw safe?'
+'003. Those thieves stole thirty jewels.'
+'004. Jane may earn more money by working hard.'
+'005. She is thinner than I am.'
+'006. Bright sunshine shimmers on the ocean.'
+'007. Nothing is as offensive as innocence.'
+'008. Why yell or worry over silly items?'
+.
+.
+.
+'455. Spherical gifts are difficult to wrap.'
+'456. Ralph prepared red snapper with fresh lemon sauce for dinner.'
+'457. Roy ignored the spurious data points in drawing the graph.'
+'458. The thick elm forest was nearly overwhelmed by Dutch Elm Disease.'
+'459. In developing film, many toxic chemicals are used.'
+'460. Which theatre shows "Mother Goose"?'
+</pre>
+
+Thus, you can use this variable directly to write a title:
+<pre class="codeinput">
+figure
+h1 = subplot(311);
+displaySoundWave(EPG_parameters,h1);
+h2 = subplot(312);
+displayAsymmetryIndex(EPG_parameters,h2);
+h3 = subplot(313);
+displaySpectrogram(EPG_parameters,h3);
+
+h1.Title.String     = allPhrases{1};
+h1.Title.FontSize   = 18;
+</pre>
+
+![Audio with asymmetry](Figures/Manual_LabToTextGrid2_17.png)
+
+This is useful when you are batch-processing a large number of phrases.
 
 <a name="Palatogram"/>
 <h2>Display of the Palatogram</h2>
