@@ -1,7 +1,7 @@
 # ElectroPalatography
 A repository of useful routines that can be used in Phonetics and Electropalatography
 
-<img src="Figures/test_3.gif" width="300" height="300" />
+<img src="Figures/test_3.gif" width="500" height="300" />
 
 ##### Table of Contents  
 
