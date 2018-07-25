@@ -482,8 +482,6 @@ You can also save the phrase into the EPG_parameters to use it later on.
  </pre">
 
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_17.png)
-
 
 This is useful when you are batch-processing a large number of phrases.
 
