@@ -16,6 +16,7 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 [Display of the Spectrogram](#Spectrogram)   
 [Add Titles to the Plots](#Titles)   
 [Display of the Palatogram](#Palatogram)   
+[Videos and Animations](#Animations)   
 
 
 
@@ -539,6 +540,40 @@ displayPalatogram(EPG_parameters,-3);
 
 
 
+<a name="Animations"/>
+<h2>Videos and Animations</h2>
+</a>
+
+The most complete visualisation of a phrase is when you can see in a single window the sound wave,  spectrogram, palatogram and a small window of the sound wave with its corresponding Fourier transform. This can be obtained with the function "visualisePalatography". As before, you will need the variable EPG_parameters as input argument. If you want to display the phrase as title of the figure, you will need to save it into EPG_parameters before you call the function:
+
+<pre class="codeinput">
+EPG_parameters.Title = allPhrases{1};
+visualisePalatography(EPG_parameters);
+</pre>
+
+
+If you call this function with a single argument, it will display the data in the screen as shown below.
+
+![Video Window](Figures/visualisePalatography_1.png)
+
+If you want to save as a video, you will need to use a second input argument with the desired name, e.g. "test.avi":
+
+<pre class="codeinput">
+visualisePalatography(EPG_parameters,'test.avi');
+</pre>
+
+This will save the animation in 3 files, the name will be appended "1", "2" and "3". The first one is saved with sound, HOWEVER, there is great variability into saving videos, and these not always work, particularly if you save on Windows and try to play in Mac or vice-versa. For best results, try to display with VLC.
+
+![Video Window 1](Figures/test_1.png)
+
+The second is saved without sound and is best displayed with QuickTime.
+
+![Video Window 1](Figures/test_2.png)
+
+
+The third one is an animated GIF and can be used on websites and presentations without much trouble.
+
+![Video Window](Figures/test_3.gif)
 
 <p>
 </p>

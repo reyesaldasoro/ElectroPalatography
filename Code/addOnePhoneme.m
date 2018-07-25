@@ -10,6 +10,7 @@ if isfield(EPG_parameters,'Phonemes')
         currentPhoneme = 0;
     end
     if currentPhoneme >0
+        h1=gca;
         %for k=1:EPG_parameters.numPhonemes
         if strcmp(EPG_parameters.Phonemes{currentPhoneme,3},'sil')
             colCode = 0.4*[1 1 1];
