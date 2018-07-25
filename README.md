@@ -476,11 +476,14 @@ h1.Title.FontSize   = 18;
 You can also save the phrase into the EPG_parameters to use it later on.
 
 <pre class="codeinput">
+
  EPG_parameters.Title = allPhrases{1};
+
  </pre">
 
 
 ![Audio with asymmetry](Figures/Manual_LabToTextGrid2_17.png)
+
 
 This is useful when you are batch-processing a large number of phrases.
 
@@ -493,6 +496,7 @@ To visualise the palatograms, there are several options. If you are interested i
 <pre class="codeinput">
 displayPalatogram(EPG_parameters,1);
 </pre>
+
 ![Palatogram1](Figures/Manual_LabToTextGrid2_09.png)
 
 
