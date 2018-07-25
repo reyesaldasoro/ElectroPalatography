@@ -1,7 +1,7 @@
 # ElectroPalatography
 A repository of useful routines that can be used in Phonetics and Electropalatography
 
-
+<img src="Figures/test_3.gif" width="300" height="300" />
 
 ##### Table of Contents  
 
@@ -580,6 +580,7 @@ The second is saved without sound and is best displayed with QuickTime.
 The third one is an animated GIF and can be used on websites and presentations without much trouble.
 
 ![Video Window](Figures/test_3.gif)
+
 
 <p>
 </p>
