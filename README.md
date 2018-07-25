@@ -472,6 +472,13 @@ h1.Title.String     = allPhrases{1};
 h1.Title.FontSize   = 18;
 </pre>
 
+You can also save the phrase into the EPG_parameters to use it later on.
+
+<pre class="codeinput">
+ EPG_parameters.Title = allPhrases{1};
+ </pre">
+
+
 ![Audio with asymmetry](Figures/Manual_LabToTextGrid2_17.png)
 
 This is useful when you are batch-processing a large number of phrases.
