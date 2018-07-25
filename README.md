@@ -568,11 +568,13 @@ visualisePalatography(EPG_parameters,'test.avi');
 
 This will save the animation in 3 files, the name will be appended "1", "2" and "3". The first one is saved with sound, HOWEVER, there is great variability into saving videos, and these not always work, particularly if you save on Windows and try to play in Mac or vice-versa. For best results, try to display with VLC.
 
-![Video Window 1](Figures/test_1.png)
+
+<img src="Figures/test_1.png" width="300" height="300" />
 
 The second is saved without sound and is best displayed with QuickTime.
 
-![Video Window 1](Figures/test_2.png)
+
+<img src="Figures/test_2.png" width="300" height="300" />
 
 
 The third one is an animated GIF and can be used on websites and presentations without much trouble.
