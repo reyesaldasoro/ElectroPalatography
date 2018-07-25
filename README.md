@@ -405,6 +405,7 @@ displaySpectrogram(EPG_parameters,h3);
 
 
 <p>
+
 Again notice that Spectrogram finishes some time before the sound wave. This is done to be able to correlate the spectra with the palatograms.
 
 
@@ -485,6 +486,8 @@ To visualise the palatograms, there are several options. If you are interested i
 displayPalatogram(EPG_parameters,1);
 </pre>
 ![Palatogram1](Figures/Manual_LabToTextGrid2_09.png)
+
+
 Again, it is possible to have several plots in a single figure using handles:
 
 <pre class="codeinput">
