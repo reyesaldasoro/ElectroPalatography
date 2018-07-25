@@ -14,6 +14,7 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 [Display audio signal with Phonemes](#displaySoundWave)   
 [Display of the asymmetry index](#displayAsymmetryIndex)   
 [Display of the Spectrogram](#Spectrogram)   
+[Add Titles to the Plots](#Titles)   
 [Display of the Palatogram](#Palatogram)   
 
 
