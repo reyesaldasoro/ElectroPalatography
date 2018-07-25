@@ -20,6 +20,16 @@ A repository of useful routines that can be used in Phonetics and Electropalatog
 
 
 
+
+<h2>Reference</h2>
+
+If you find these routines useful, please cite as:
+
+<h3>
+Miller, N. R., Verhoeven, J. & Reyes-Aldasoro, C. C. (2018). Analysis of the symmetry of electrodes for Electropalatography with Cone Beam CT Scanning. In Medical Image Understanding and Analysis, Southampton, UK, 09-11 July 2018.
+</h3>
+
+
 <a name="LabTextGrid"/>
 <h2>Convert LAB format to TextGrid Format</h2>
 </a>
