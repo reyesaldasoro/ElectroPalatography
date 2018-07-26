@@ -1,5 +1,5 @@
 # ElectroPalatography
-A repository of useful routines that can be used in Phonetics and Electropalatography
+A repository of useful Matlab routines that can be used to convert, analyse and display file of  Phonetics and ElectroPalatography.
 
 <img src="Figures/test_3.gif" width="500" height="300" />
 
