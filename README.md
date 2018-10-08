@@ -182,9 +182,9 @@ The process of reading the ElectroPalatography data from an EPG file requires se
 
 
 <pre class="codeinput">
->> currentLAB_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
+>> currentWAV_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
 >> currentEPG_File = 'MOCHA/fsew0_v1.1/fsew0_001.epg';
->> [EPG_parameters]   = readAudioFile (currentLAB_File);
+>> [EPG_parameters]   = readAudioFile (currentWAV_File);
 >> EPG_parameters = readPalatogram(currentEPG_File,EPG_parameters);
 >> disp(EPG_parameters)
                   audioWave: [35495×1 double]
