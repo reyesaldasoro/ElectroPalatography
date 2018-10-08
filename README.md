@@ -156,7 +156,7 @@ TextGrid = Lab_to_TextGrid(dataIn);
 
 <pre class="codeinput">
 >> currentWAV_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
->> [EPG_parameters]   = readAudioFile (currentLAB_File);
+>> [EPG_parameters]   = readAudioFile (currentWAV_File);
 >> disp(EPG_parameters)
      audioWave: [35495×1 double]
     sampleRate: 16000
