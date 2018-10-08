@@ -8,12 +8,19 @@ function EPG_parameters=shortWindowAnalysis(EPG_parameters)
 % (25660) and the frames per second of the video (25.660) thus in this case it is
 % 1000
 
+% This field is calculated when the palatogram is read, in case it was not
+% read add here.
+if ~isfield(EPG_parameters,'stepSamp')
+    EPG_parameters.stepSamp = 1000; 
+end
+
 %stepSamp                = 1000;
 %stepSamp                = (sampleRate / FrameRate);
 
 % The temporary Sound Signal and temporary Spectrum will be stored in a matrix with
 % one column per time window and 1000/500 rows for the time/frequency components
 %tempSpectrum=[];
+
 
 tempSound                       = zeros(ceil(EPG_parameters.stepSamp),EPG_parameters.numImages);
 tempSpectrum                    = zeros(ceil(EPG_parameters.stepSamp/2),EPG_parameters.numImages);
