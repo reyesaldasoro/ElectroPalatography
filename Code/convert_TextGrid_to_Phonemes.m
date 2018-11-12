@@ -44,9 +44,11 @@ for counterLines=StartPhonemes+5:4:EndPhonemes-1
     %
     currentInterval             = LAB{counterLines}(1+strfind(LAB{counterLines},'['):...
         -1+strfind(LAB{counterLines},']'));
-    Phonemes{str2num(currentInterval),1} = str2num(LAB{counterLines+1,1}(19:end));
-    Phonemes{str2num(currentInterval),2} = str2num(LAB{counterLines+2,1}(19:end));
-    currPhoneme                      = LAB{counterLines+3,1}(21:end-2);
+    Phonemes{str2num(currentInterval),1}    = str2num(LAB{counterLines+1,1}(19:end));
+    Phonemes{str2num(currentInterval),2}    = str2num(LAB{counterLines+2,1}(19:end));
+    currLinePhoneme                         = LAB{counterLines+3,1};
+    delimitersPhoneme                       = strfind(currLinePhoneme,'"');
+    currPhoneme                             = LAB{counterLines+3,1}(delimitersPhoneme(1)+1:delimitersPhoneme(2)-1);
     if isempty(currPhoneme)
         Phonemes{str2num(currentInterval),3} = 'sil';
     else
