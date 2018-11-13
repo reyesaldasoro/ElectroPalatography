@@ -1,6 +1,10 @@
 function [Phonemes,numPhonemes] = convert_LAB_to_Phonemes(LAB)
 
-
+% Input may be a cell with the labelled phonemes or just the file from which these
+% must be read
+if ~isa(LAB,'cell')
+    LAB = importdata(LAB,' ');
+end
     %% Interpret Labelled Phonemes
     % Read the numLines    
     numPhonemes             = size(LAB,1);
