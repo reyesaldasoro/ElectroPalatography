@@ -69,6 +69,13 @@ for k=1:numPhonemes
         Phonemes{k,5} =     currentTable{placeTable,3};
         Phonemes{k,6} =     currentTable{placeTable,4};
         Phonemes{k,7} =     currentTable{placeTable,5};
+    else
+        % Add option to display a phoneme not on the table
+%         if ~strcmp(Phonemes{k,3},'sil')
+%             if ~strcmp(Phonemes{k,3},'breath')
+%                 disp(Phonemes{k,3})
+%             end
+%         end
     end
 end
     
