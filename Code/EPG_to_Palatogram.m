@@ -47,15 +47,17 @@ else
     
     Palatogram(EPG_parameters.rows,EPG_parameters.cols-biasCol,EPG_parameters.levs,EPG_parameters.numImages)        = (0);
     PalatogramAsym(EPG_parameters.rows,EPG_parameters.cols-biasCol,3,EPG_parameters.numImages)    = (0);
-    asymIndex(EPG_parameters.numImages,3)                                   = 0;
+    asymIndex(EPG_parameters.numImages,3)                                       = 0;
     activeElectrodesCum(EPG_parameters.rows,EPG_parameters.cols-biasCol)        = 0;
     asymmetricElectrodesCum(EPG_parameters.rows,EPG_parameters.cols-biasCol)    = 0;
     
     for counterFrames = 1:EPG_Samples
-       [EPG_parameters,Palatogram(:,:,1,counterFrames)]     = EPG_to_Palatogram (EPG_data(counterFrames,:),EPG_parameters,electrodes);
+        [EPG_parameters,Palatogram(:,:,1,counterFrames)]        ...
+            = EPG_to_Palatogram (EPG_data(counterFrames,:),EPG_parameters,electrodes);
         
         
-        [PalatogramAsym(:,:,:,counterFrames), asymIndex(counterFrames,:),activeElectrodes,asymmetricElectrodes] = asymmetry_projection(Palatogram(:,:,1,counterFrames));
+        [PalatogramAsym(:,:,:,counterFrames), asymIndex(counterFrames,:),activeElectrodes,asymmetricElectrodes] ...
+            = asymmetry_projection(Palatogram(:,:,1,counterFrames));
         
         activeElectrodesCum                 = activeElectrodesCum       + double(activeElectrodes);
         asymmetricElectrodesCum             = asymmetricElectrodesCum   + double(asymmetricElectrodes);
