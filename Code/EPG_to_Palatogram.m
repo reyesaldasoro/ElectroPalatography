@@ -66,7 +66,7 @@ else
 EPG_parameters.asymIndex                        = asymIndex;
 EPG_parameters.Palatogram                       = Palatogram;
 EPG_parameters.PalatogramAsym                   = PalatogramAsym;
-EPG_parameters.activeElectrodesCum             = activeElectrodesCum;
+EPG_parameters.activeElectrodesCum              = activeElectrodesCum;
 EPG_parameters.asymmetricElectrodesCum          = asymmetricElectrodesCum;
     
 end
