@@ -19,7 +19,7 @@ EPG_data2                   = reshape(EPG_data,12,numel(EPG_data)/12)';
 % name, possible to change later on)
 
 
-
+EPG_parameters.EPG_data        = EPG_data2;
 % Calculate frame rate and other image parameters %SEE BELOW
 EPG_parameters.FrameRate       = 200;
 EPG_parameters.numImages       = size(EPG_data2,1);
