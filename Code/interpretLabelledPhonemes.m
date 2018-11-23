@@ -23,7 +23,7 @@ if strcmp(currentLAB_File(end),'b')
     Words=[];
     numWords = 0;
 elseif strcmp(currentLAB_File(end),'d')
-    [Phonemes,numPhonemes] = convert_TextGrid_to_Phonemes(currentLAB_File);
+    [Phonemes,numPhonemes,Words,numWords] = convert_TextGrid_to_Phonemes(currentLAB_File);
 %     % File is TextGrid Format, it can have multiple IntervalTiers for words,
 %     % phonemes, etc. 
 %  
@@ -110,5 +110,6 @@ end
 
 EPG_parameters.Phonemes     = Phonemes;
 EPG_parameters.numPhonemes  = numPhonemes;
+
 EPG_parameters.Words        = Words;
 EPG_parameters.numWords     = numWords;
