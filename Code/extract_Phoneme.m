@@ -129,4 +129,4 @@ end
 
 % Remove any level of avPhonemes with just zeros. It may have come from the
 % initialisation
-avPhoneme(:,:,find([sum(sum(avPhoneme))]==0))=[];
+avPhoneme(:,:,find(sum(sum(avPhoneme))==0))=[];
