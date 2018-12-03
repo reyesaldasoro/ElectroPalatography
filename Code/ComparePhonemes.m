@@ -3,13 +3,13 @@ clear all
 %baseDir    = '/Users/ccr22/OneDrive - City, University of London/Acad/City_Research/JoVerhoeven/MOCHA_Relabelled/fsew0_v1.1\';
 %baseDir     = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\fsew0_v1.1\';
 %baseDir    = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\msak0_v1.1\';
-speaker     = 'msak';
-%speaker     = 'fsew';
+%speaker     = 'msak';
+speaker     = 'fsew';
 baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1\');
 dir0        = dir(strcat(baseDir,'*.mat'));
 numPhrases  = size(dir0,1);
 %% define phonemes of interest in a list
-listPhonemes    = {'n','d','t','r','ng','g','k','w','z','s','zh','z','ng','l','jh','ch'};
+listPhonemes    = {'n','d','t','r','ng','g','k','w','z','s','zh','sh','l','jh','ch'};
 numPhonemes     = size(listPhonemes,2);
 %% initialise the cell where results will be stored
 avPhoneme_tot{numPhonemes,8}=[];
