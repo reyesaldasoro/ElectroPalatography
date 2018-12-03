@@ -3,8 +3,8 @@ clear all
 %baseDir    = '/Users/ccr22/OneDrive - City, University of London/Acad/City_Research/JoVerhoeven/MOCHA_Relabelled/fsew0_v1.1\';
 %baseDir     = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\fsew0_v1.1\';
 %baseDir    = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\msak0_v1.1\';
-%speaker     = 'msak';
-speaker     = 'fsew';
+speaker     = 'msak';
+%speaker     = 'fsew';
 baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1\');
 dir0        = dir(strcat(baseDir,'*.mat'));
 numPhrases  = size(dir0,1);
@@ -58,9 +58,9 @@ for k = 1:numPhonemes
     colormap(jet2)
     %  title(strcat('msak: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
     combinedTitle{1}    = strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']');
-    combinedTitle{2}    = strcat('Total Asym:',32,num2str(totalAsymmetry(1)),32,'/',32,num2str(totalAsymmetry(2)));
-    combinedTitle{3}    = strcat('Front Asym:',32,num2str(frontAsymmetry(1)),32,'/',32,num2str(frontAsymmetry(2)));
-    combinedTitle{4}    = strcat('Back  Asym:',32,num2str(backAsymmetry(1)),32,'/',32,num2str(backAsymmetry(2)));
+    combinedTitle{2}    = strcat('Total Asym:',32,num2str(avPhoneme_tot{k,3}),32,'/',32,num2str(avPhoneme_tot{k,4}));
+    combinedTitle{3}    = strcat('Front Asym:',32,num2str(avPhoneme_tot{k,5}),32,'/',32,num2str(avPhoneme_tot{k,6}));
+    combinedTitle{4}    = strcat('Back  Asym:',32,num2str(avPhoneme_tot{k,7}),32,'/',32,num2str(avPhoneme_tot{k,8}));
     
     title(combinedTitle,'fontsize',12)
     %  title(strcat('fsew: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
@@ -78,7 +78,7 @@ for k = 1:numPhonemes
     montage(avPhoneme_tot{k,2}./(repmat(max(max(avPhoneme_tot{k,2})),[300 240 1])))
     colormap(jet2)
     %  title(strcat('msak: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
-    title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
+    title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(avPhoneme_tot{k,3}),'/',num2str(avPhoneme_tot{k,4})),'fontsize',15)
     drawnow
     pause(0.5)
     
