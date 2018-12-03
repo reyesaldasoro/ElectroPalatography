@@ -27,10 +27,7 @@ for k=1:numPhrases
     end
 end
 
-
-%% Display
-jet2=jet;
-jet2(1,:) =0;
+%% Calculate asymmetries
 
 for k = 1:numPhonemes
     totalActivation     = sum(avPhoneme_tot{k,2}(:));
@@ -45,6 +42,14 @@ for k = 1:numPhonemes
     avPhoneme_tot{k,6}  = frontAsymmetry(2);
     avPhoneme_tot{k,7}  = backAsymmetry(1);
     avPhoneme_tot{k,8}  = backAsymmetry(2);
+end
+
+
+%% Display
+jet2=jet;
+jet2(1,:) =0;
+
+for k = 1:numPhonemes
     
     
     
