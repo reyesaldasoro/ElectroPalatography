@@ -2,7 +2,7 @@ function avPhoneme = extract_Phoneme_EPG(dataIn,desiredPhoneme,avPhoneme)
 % A function that extracts the Palatogram corresponding to one phoneme in a
 % sentence. If the phoneme occurs more than once, each occurrence is stored
 % in one level of a 3D Matrix.
-% ---------------------------------------------------------------------
+
 % dataIn can be:
 % 1) a struct of the form EPG_Parameters
 % 2) a file location
@@ -12,10 +12,7 @@ function avPhoneme = extract_Phoneme_EPG(dataIn,desiredPhoneme,avPhoneme)
 %
 % desiredPhoneme is the phoneme from which the EPG will be extracted
 %
-% avPhoneme is the matrix where the output will be stored, and can be
-% passed as an input parameter in cases where you want to read several
-% files
-% ---------------------------------------------------------------------
+% avPhoneme is the matrix 
 if ~exist('avPhoneme','var')
     avPhoneme = zeros(300,240);
     numEventsPhoneme =0;
