@@ -16,6 +16,16 @@ function avPhoneme = extract_Phoneme_EPG(dataIn,desiredPhoneme,avPhoneme)
 % passed as an input parameter in cases where you want to read several
 % files
 % ---------------------------------------------------------------------
+
+% A phoneme is required, if not, then exit
+if ~exist('desiredPhoneme','var')
+    disp('You should provide a phoneme to be extracted')
+    avPhoneme =[];
+    return;
+end
+
+% In case there is no variable for the avPhoneme, it is created with zeros
+% numEventsPhoneme is used to store the next phoneme that is extracted
 if ~exist('avPhoneme','var')
     avPhoneme = zeros(300,240);
     numEventsPhoneme =0;
