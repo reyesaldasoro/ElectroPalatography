@@ -42,9 +42,9 @@ for k = 1:numPhonemes
     colormap(jet2)
   %  title(strcat('msak: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
     combinedTitle{1}    = strcat('fsew: [',32,avPhoneme_tot{k,1},32,']');
-    combinedTitle{2}    = strcat('Total Asym:',32,num2str(totalAsymmetry(1)),32,'/',32,num2str(totalAsymmetry(2)));
-    combinedTitle{3}    = strcat('Front Asym:',32,num2str(frontAsymmetry(1)),32,'/',32,num2str(frontAsymmetry(2)));
-    combinedTitle{4}    = strcat('Back  Asym:',32,num2str(backAsymmetry(1)),32,'/',32,num2str(backAsymmetry(2)));
+    combinedTitle{2}    = strcat('Total Asym:',32,num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2)));
+    combinedTitle{3}    = strcat('Front Asym:',32,num2str(frontAsymmetry(1)),'/',num2str(frontAsymmetry(2)));
+    combinedTitle{4}    = strcat('Back  Asym:',32,num2str(backAsymmetry(1)),'/',num2str(backAsymmetry(2)));
 
 title(combinedTitle,'fontsize',12)
 %  title(strcat('fsew: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
