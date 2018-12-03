@@ -4,7 +4,7 @@ clear all
 %baseDir     = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\fsew0_v1.1\';
 %baseDir    = 'D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\msak0_v1.1\';
 speaker     = 'msak';
-speaker     = 'fsew';
+%speaker     = 'fsew';
 baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1\');
 dir0        = dir(strcat(baseDir,'*.mat'));
 numPhrases  = size(dir0,1);
