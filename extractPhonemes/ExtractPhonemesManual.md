@@ -226,13 +226,46 @@ end
 </pre>
 <br/>
 
-
-
-
-
-
-
 <img src="Figures/fsew_n4.png" width="500" height="300" />
+
+
+
+<h3> Calculations per Phoneme </h3>
+<p>   If it is of interest to calculate the asymmetry (or any other parameter) not from
+ the accummulation of the occurrences, this is possible in the following way. The
+ data has been stored in avPhoneme_tot, per phoneme, per occurrence in column 2. 
+</p>
+<pre class="codeinput">
+
+k=1;
+
+activationPerOccurence          = squeeze(sum(sum(avPhoneme_tot{k,2})));
+frontActivationPerOccurence     = squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
+backActivationPerOccurence      = squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,:,:))));
+
+totalAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))./activationPerOccurence           squeeze(sum(sum(avPhoneme_tot{k,2}(:,121:240,:))))./activationPerOccurence]);
+frontAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:))))./frontActivationPerOccurence      squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:))))./frontActivationPerOccurence]);
+backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:))))./backActivationPerOccurence    squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:))))./backActivationPerOccurence]);
+  
+</pre>
+
+<p>
+     In this way, each phoneme has the occurrence analysed.
+</p>
+
+<pre class="codeinput">
+<img src="Figures/asymmetry_n.png" width="600" />
+
+
+<img src="Figures/Montage_n.png" width="500"  />
+
+  
+</pre>
+
+
+
+
+
 
 
 
