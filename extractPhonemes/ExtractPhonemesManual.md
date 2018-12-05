@@ -22,6 +22,18 @@ Verhoeven, J., Miller, N. R.,  & Reyes-Aldasoro, C. C. (2018). Analysis of the s
      for each occurrence.
 </p>
 
+
+<h3> Select the speaker </h3>
+<p> In our example there are 2 cases, msak and fsew, this will select the folder where
+ each is stored
+</p>
+<pre class="codeinput">
+ speaker     = 'msak';
+%speaker     = 'fsew';
+</pre>
+<br/>
+
+
 <h3>Select the base folder where the files (a number of files) is stored</h3>
 <pre class="codeinput">
 if strcmp(filesep,'\')
@@ -35,16 +47,6 @@ end
 
 <br/>
 
-
-<h3> Select the speaker </h3>
-<p> In our example there are 2 cases, msak and fsew, this will select the folder where
- each is stored
-</p>
-<pre class="codeinput">
- speaker     = 'msak';
-%speaker     = 'fsew';
-</pre>
-<br/>
 
 <h3>  </h3>
 <p> Read the folder and determine the number of phrases (i.e. files)
