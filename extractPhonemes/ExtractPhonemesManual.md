@@ -175,7 +175,10 @@ Since there may be longer or shorter occurrences, the number in each occurence
 <img src="Figures/Montage_occurrences.png" width="500" height="300" />
 
 <h3> Batch Display </h3>
-
+<p>
+     To create figures for ALL the files in the folder, you can iterate over the number of Phonemes, and at 
+     the same time, calculate the measurements of asymmetry:
+     </p>
 <pre class="codeinput">
 jet2=jet;
 jet2(1,:) =0;
@@ -223,23 +226,6 @@ end
 </pre>
 <br/>
 
-
-<h3>  </h3>
-<p> 
-</p>
-<pre class="codeinput">
- 
-</pre>
-<br/>
-
-
-<h3>  </h3>
-<p> 
-</p>
-<pre class="codeinput">
- 
-</pre>
-<br/>
 
 
 
