@@ -18,13 +18,11 @@ Verhoeven, J., Miller, N. R.,  & Reyes-Aldasoro, C. C. (2018). Analysis of the s
 <h2>Description of ComparePhonemes.m</h2>
 </a>
 
-
-
 <p>This file takes as input a folder where there are a number of phrases and calculates the palatograms 
      for each occurrence.
 </p>
 
-<h2>Select the base folder where the files (a number of files) is stored</h2>
+<h3>Select the base folder where the files (a number of files) is stored</h3>
 <pre class="codeinput">
 if strcmp(filesep,'\')
     baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
@@ -32,560 +30,179 @@ else
     baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
 end
 </pre>
-
-<p>See for instance the data base of MOCHA TIMIT (<a href="http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html">http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html</a>)</p>
-
-
-<p>Another format is TextGrid, use by the popular software Praat (www.fon.hum.uva.nl/praat/). These files with extension .TextGrid have a more complicated format that allows to have words and phonemes. A file can look like this:</p>
-
-<pre class="codeinput">
-File type = "ooTextFile"
-Object class = "TextGrid"
-
-xmin = 0
-xmax = 3.968
-tiers? exists
-size = 1 item []:
-     item [1]:
-              class = "IntervalTier"
-              name = "phonemes"
-              xmin = 0         
-              xmax = 3.968         
-              intervals: size = 51         
-              intervals [1]:             
-                   xmin = 0             
-                   xmax = 0.7904913168586506             
-                   text = ""         
-                   intervals [2]:             
-                   xmin = 0.7904913168586506             
-                   xmax = 0.8708421929714597             
-                   text = "g"
-</pre>
-
-<p>To convert from lab to textgrid you can use the following function:</p>
-<pre class="codeinput">
-TextGrid = Lab_to_TextGrid(dataIn);
-</pre>
+<img src="Figures/FolderWithPhrases.png" width="500" height="300" />
 
 
-<p>dataIn can be two different options:
-
-1) a single file name, the file will be read and converted to TextGrid and saved in the same folder where the .lab file is located
-
-2) a folder, all the .lab files in the folder will be converted to TextGrid</p>
+<br/>
 
 
-<p> The code requires one intermediate function to convert the lab file to a MATLAB Cell, this can be used separately to process phonemes in MATLAB. There is a parallel function to read TextGrid and convert to a MATLAB Cell.
-
+<h3> Select the speaker </h3>
+<p> In our example there are 2 cases, msak and fsew, this will select the folder where
+ each is stored
 </p>
-
-<a name="LABTextGridCell"/>
-<h2>Convert LAB or TextGrid to a MATLAB Cell </h2>
-</a>
-
-
-
-<p> The function interpretLabelledPhonemes takes a file name as input and converts the phonemes, and words if available in TextGrid, to a MATLAB Cell. The function automatically detects the name of the file (it can end in "d" for TextGrid or "b" for lab), and calls the correct function, either convert_LAB_to_Phonemes.m or convert_TextGrid_to_Phonemes.
-
 <pre class="codeinput">
-[EPG_parameters] = interpretLabelledPhonemes(currentLAB_File,EPG_parameters);
+ speaker     = 'msak';
+%speaker     = 'fsew';
 </pre>
+<br/>
 
-<p> For example:</p>
-
-<pre class="codeinput">
-
->> currentLAB_File = 'MOCHA/fsew0_v1.1/fsew0_001.lab';
->> [EPG_parameters] = interpretLabelledPhonemes(currentLAB_File);
->> disp(EPG_parameters)
-            LAB: {18×3 cell}
-    numPhonemes: 18
-          Words: []
-       numWords: 0
-
->> disp(EPG_parameters.LAB)
-    [     0]    [0.2500]    'sil'   
-    [0.2500]    [0.2800]    'breath'
-    [0.2800]    [0.3500]    'sil'   
-    [0.3500]    [0.4200]    'dh'    
-    [0.4200]    [0.5000]    'i'     
-    [0.5000]    [0.6100]    's'     
-    [0.6100]    [0.6400]    'w'     
-    [0.6400]    [0.6800]    '@'     
-    [0.6800]    [0.7500]    'z'     
-    [0.7500]    [0.9200]    'ii'    
-    [0.9200]    [0.9800]    'z'     
-    [0.9800]    [1.1100]    'iy'    
-    [1.1100]    [1.1800]    'f'     
-    [1.1800]    [1.2500]    '@'     
-    [1.2500]    [1.3500]    'r'     
-    [1.3500]    [1.4200]    'uh'    
-    [1.4200]    [1.6700]    's'     
-    [1.6700]    [2.2000]    'sil'  
-</pre>
-
-<a name="readAudioFile"/>
-<h2>Read the audio file </h2>
-</a>
-
-<p>The files for electropalatography are saved separately into several files:</p>
-
-* .wav contains the audio file as a wave, in most cases the sample rate is also available from the same file
-
-* .epg contains the electropalatography data, contacts with the electrodes of a palate
-
-* .lab contains the labelled phonemes
-
-* .TextGrid same as the  .lab, but with the format of PRAAT
-
-
-<p> To read the audio file and automatically calculate some important parameters use the file readAudioFile like this:
-
-<pre class="codeinput">
->> currentWAV_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
->> [EPG_parameters]   = readAudioFile (currentWAV_File);
->> disp(EPG_parameters)
-     audioWave: [35495×1 double]
-    sampleRate: 16000
-    numSamples: 35495
-    timeVector: [1×35495 double]
-     totalTime: 2.2184
-     maxSignal: 0.4084
-     minSignal: -0.4106
-
->> sound(EPG_parameters.audioWave,EPG_parameters.sampleRate)
-</pre>
-
-The last line will reproduce the sound.
-
-<a name="readPalatogram"/>
-<h2>Read the ElectroPalatography data  </h2>
-</a>
-
-
-<p>
-The process of reading the ElectroPalatography data from an EPG file requires several files, readPalatogram.m, EPG_to_Palatogram.m, assymetry_projection.m and EPB_Boxes.mat. These are necessary as many things are calculated in this step. Among them the whole time frame of the palatograms and their asymmetry calculation, the asymmetry index (i.e. how asymmetric is every EPG recorded). It is recommended to read the audio file previously as the sample rate is necessary for some calculations.
+<h3>  </h3>
+<p> Read the folder and determine the number of phrases (i.e. files)
 </p>
-
-
 <pre class="codeinput">
->> currentWAV_File = 'MOCHA/fsew0_v1.1/fsew0_001.wav';
->> currentEPG_File = 'MOCHA/fsew0_v1.1/fsew0_001.epg';
->> [EPG_parameters]   = readAudioFile (currentWAV_File);
->> EPG_parameters = readPalatogram(currentEPG_File,EPG_parameters);
->> disp(EPG_parameters)
-                  audioWave: [35495×1 double]
-                 sampleRate: 16000
-                 numSamples: 35495
-                 timeVector: [1×35495 double]
-                  totalTime: 2.2184
-                  maxSignal: 0.4084
-                  minSignal: -0.4106
-                  FrameRate: 200
-                  numImages: 388
-                       rows: 300
-                       cols: 240
-                       levs: 1
-              EPGtimeVector: [1×388 double]
-               EPGtotalTime: 1.9400
-                   stepSamp: 80
-                current_EPG: 'MOCHA/fsew0_v1.1/fsew0_001.epg'
-                          v: []
-                  asymIndex: [388×3 double]
-                 Palatogram: [300×240×1×388 double]
-             PalatogramAsym: [300×240×3×388 double]
-        activeElectrodesCum: [300×240 double]
-    asymmetricElectrodesCum: [300×240 double]
-
->>
-</pre>
-
-<a name="STFA"/>
-<h2>Short-Time Fourier Analysis  </h2>
-</a>
-
-
-<p>
-To calculate the Short-Time Fourier Transform of the audio signal, together with a series of parameters, the function shortTimeFourierAnalysis is used in the following way:
-
-
-<pre class="codeinput">
-
->> EPG_parameters=shortTimeFourierAnalysis(EPG_parameters);
->> disp(EPG_parameters)
-                  audioWave: [35495×1 double]
-                 sampleRate: 16000
-                 numSamples: 35495
-                 timeVector: [1×35495 double]
-                  totalTime: 2.2184
-                  maxSignal: 0.4084
-                  minSignal: -0.4106
-                  FrameRate: 200
-                  numImages: 388
-                       rows: 300
-                       cols: 240
-                       levs: 1
-              EPGtimeVector: [1×388 double]
-               EPGtotalTime: 1.9400
-                   stepSamp: 80
-                current_EPG: 'MOCHA/fsew0_v1.1/fsew0_001.epg'
-                          v: []
-                  asymIndex: [388×3 double]
-                 Palatogram: [300×240×1×388 double]
-             PalatogramAsym: [300×240×3×388 double]
-        activeElectrodesCum: [300×240 double]
-    asymmetricElectrodesCum: [300×240 double]
-               lengthWindow: 0.0050
-        timeTickVectorSound: [0 16000 32000]
-       timeTickVectorSoundL: [0 1 2]
-      timeTickVectorWindowL: [0 1 2 3 4 5]
-       timeTickVectorWindow: [1 16.8000 32.6000 48.4000 64.2000 80]
-     timeTickVectorSpectrum: [1 201]
-    timeTickVectorSpectrumL: [0 1]
-             freqTickVector: [8 16 24 32 40]
-            freqTickVectorL: [1400 3000 4600 6200 7800]
-                   maxSound: 0.3267
-                   minSound: -0.3284
-                maxSpectrum: 1.7651
-                minSpectrum: 1.4185e-05
-                  tempSound: [80×388 double]
-               tempSpectrum: [40×388 double]
-             tempTimeVector: [80×388 double]
-
->>
+ dir0        = dir(strcat(baseDir,'*.mat'));
+numPhrases  = size(dir0,1);
 
 </pre>
-
-<p> As you can see, all the parameters are saved in a single variable; EPG_parameters.</p>
-
-<a name="Visualisation"/>
-<h1> Visualisation </h1>
-</a>
+<br/>
 
 
-
-
-<p>The variable EPG_parameters contains all that is required to perform a series of calculations and visualisations of the sound. The variables can be accessed directly, for instance:</p>
-
- The audio signal:
-
-<pre class="codeinput">
-plot(EPG_parameters.audioWave)
-</pre>
-
-![Audio wave](Figures/Manual_LabToTextGrid2_01.png)
-
-<pre class="codeinput">
-imagesc(EPG_parameters.PalatogramAsym(:,:,:,1))
-</pre>
-
-The Asymmetry index along time:
-
-![Asymmetric Palatogram](Figures/Manual_LabToTextGrid2_02.png)
-
-A montage of the first 130 palatograms:
-<pre class="codeinput">
-montage(EPG_parameters.PalatogramAsym(:,:,:,1:130))
-</pre>
-
-![Montage of palatograms ](Figures/Manual_LabToTextGrid2_03.png)
-
-Spectrogram of the audio signal:
-<pre class="codeinput">
-imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
-</pre>
-
-![Spectrogram ](Figures/Manual_LabToTextGrid2_04.png)
-
-Notice that the Spectrogram is not callibrated.
-
-<p>However, there are several specialised tools in this repository, which are described below.</p>
-
-
-<a name="displaySoundWave"/>
-<h3> Display audio signal with Phonemes </h3>
-</a>
-
-
-
-<p> The function displaySoundWave.m will display the audio signal and will embed the
-phonemes.</p>
-
-
-<pre class="codeinput">
-displaySoundWave(EPG_parameters);
-</pre>
-
-![Audio with Phonemes](Figures/Manual_LabToTextGrid2_05.png)
-<p>
-The display of the phonemes requires an extra function called addPhonemes, which draws vertical lines at the beginning of each phoneme and then the phoneme as listed in
-either the lab or TextGrid file. Silence and breath are displayed in gray and blue, whilst
-the phonemes themselves are displayed in black, and are positioned alternating positions
-up and down for clarity as they sometimes overlap.
+<h3>  define phonemes of interest in a list</h3>
+<p> This is a list of the phonemes of interest, more or less can be defined by changing
+% this line
 </p>
-
-<p>
-Alternatively, if you want to create a figure with several plots in it,
-you can select the subplots and pass the handles as an input argument.
-For example:</p>
-
 <pre class="codeinput">
+ listPhonemes    = {'n','d','t','r','ng','g','k','w','z','s','zh','sh','l','jh','ch'};
+numPhonemes     = size(listPhonemes,2);
 
-figure
-h1 = subplot(211);
-h2 = subplot(212);
-imagesc(EPG_parameters.tempSpectrum);axis xy;colormap hot
-displaySoundWave(EPG_parameters,h1);
+
 </pre>
+<br/>
 
 
-![Audio with Phonemes](Figures/Manual_LabToTextGrid2_06.png)
-
-
-The use of the handles will become more clear with subsequent examples.
-
-
-
-
-<a name="displayAsymmetryIndex"/>
-<h3> Display of the asymmetry index </h3>
-</a>
-
-
-
-
-<p>
-The asymmetry index contains the number of activations that happen on one side of the palate independent of the other side. To display the asymmetry index, use the function displayAsymmetryIndex. This can be combined with the sound wave in the following way:
+<h3> initialise the cell where results will be stored </h3>
+<p>  All results will be stored in a cell, phoneme names on the first column, the
+ palatograms for each phoneme per occurrence in the second, then the measurements of
+ asymmetry in the columns 3-8. Notice that the size of the palatograms will be
+ different depending on how many times and how long each time occurs.
 
 </p>
 <pre class="codeinput">
-figure
-h1 = subplot(211);
-displaySoundWave(EPG_parameters,h1);
-h2 = subplot(212);
-displayAsymmetryIndex(EPG_parameters,h2);
+avPhoneme_tot{numPhonemes,8}=[];
+for count_phoneme = 1:numPhonemes
+    avPhoneme_tot{count_phoneme,1} = listPhonemes{count_phoneme};
+end
 </pre>
+<br/>
+
+<img src="Figures/avPhoneme_tot.png" width="500" height="300" />
 
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_07.png)
+calculate all the occurrences per phrase / per phoneme
 
-
-<p>
-Notice that the asymmetry index finishes some time before the sound wave, this is due to the time the palatograms are recorded and these can be stopped some time before the sound wave finishes.
-
-
-</p>
-
-
-<a name="Spectrogram"/>
-<h3> Display of the Spectrogram </h3>
-</a>
-
-
-
-
-<p>
-The Spectrogram contains the frequency of short-time windows. This corresponds to the Fourier Transform of the signal for the window. Other ways to display the Fourier signal will be added below. The function to display the Spectrogram is displaySpectrogram. This can be combined as before:
-
+<h3>  calculate all the occurrences per phrase / per phoneme</h3>
+<p> 
 </p>
 <pre class="codeinput">
-figure
-h1 = subplot(311);
-displaySoundWave(EPG_parameters,h1);
-h2 = subplot(312);
-displayAsymmetryIndex(EPG_parameters,h2);
-h3 = subplot(313);
-displaySpectrogram(EPG_parameters,h3);
+ for k=1:numPhrases
+    % iterate over the phrases, it is assumed that the files were previously
+    % calculated and save as MATLAB, but these can also be calculated from .wav,
+    % .epg, .TextGrid/lab
+    disp(dir0(k).name)
+    load(strcat(baseDir,dir0(k).name));
+    for count_phoneme = 1:size(listPhonemes,2)
+        % Iterate now over the phonemes, this is very quick as the slow part is the
+        % calculation of EPG_parameters
+        avPhoneme_tot{count_phoneme,2} = extract_Phoneme_EPG(EPG_parameters,listPhonemes{count_phoneme},avPhoneme_tot{count_phoneme,2});
+    end
+end
 </pre>
+<br/>
 
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_08.png)
-
-
-<p>
-
-Again notice that Spectrogram finishes some time before the sound wave. This is done to be able to correlate the spectra with the palatograms.
-
-
+<h3> Calculate asymmetries </h3>
+<p> 
 </p>
-
-
-<a name="Titles"/>
-<h2>Add Titles to the Plots</h2>
-</a>
-
-If you want to add titles to a figure you can do this directly with the handles, the handle of each plot has a field called "Title" with several properties, among them the "String" and the "FontSize"
-
 <pre class="codeinput">
-figure
-h1 = subplot(311);
-displaySoundWave(EPG_parameters,h1);
-h2 = subplot(312);
-displayAsymmetryIndex(EPG_parameters,h2);
-h3 = subplot(313);
-displaySpectrogram(EPG_parameters,h3);
-
-h1.Title.String     = 'This was easy for us';
-h1.Title.FontSize   = 18;
+ for k = 1:numPhonemes
+    totalActivation     = sum(avPhoneme_tot{k,2}(:));
+    frontActivation     = sum(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
+    backActivation      = sum(sum(sum(avPhoneme_tot{k,2}(151:300,:,:))));
+    totalAsymmetry      = sum([sum(sum(avPhoneme_tot{k,2}(:,1:120,:)))          sum(sum(avPhoneme_tot{k,2}(:,121:240,:)))],3)/totalActivation;
+    frontAsymmetry      = sum([sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:)))      sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:)))],3)/frontActivation;
+    backAsymmetry       = sum([sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:)))    sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:)))],3)/backActivation;
+    avPhoneme_tot{k,3}  = totalAsymmetry(1);
+    avPhoneme_tot{k,4}  = totalAsymmetry(2);
+    avPhoneme_tot{k,5}  = frontAsymmetry(1);
+    avPhoneme_tot{k,6}  = frontAsymmetry(2);
+    avPhoneme_tot{k,7}  = backAsymmetry(1);
+    avPhoneme_tot{k,8}  = backAsymmetry(2);
+end
 </pre>
+<br/>
 
 
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_09B.png)
-
-All the phrases of the MOCHA TIMIT data base, are saved in the variable allPhrases.mat.
-
-<pre class="codeinput">
-load allPhrases
-disp(allPhrases)
-'001. This was easy for us.'
-'002. Is this seesaw safe?'
-'003. Those thieves stole thirty jewels.'
-'004. Jane may earn more money by working hard.'
-'005. She is thinner than I am.'
-'006. Bright sunshine shimmers on the ocean.'
-'007. Nothing is as offensive as innocence.'
-'008. Why yell or worry over silly items?'
-.
-.
-.
-'455. Spherical gifts are difficult to wrap.'
-'456. Ralph prepared red snapper with fresh lemon sauce for dinner.'
-'457. Roy ignored the spurious data points in drawing the graph.'
-'458. The thick elm forest was nearly overwhelmed by Dutch Elm Disease.'
-'459. In developing film, many toxic chemicals are used.'
-'460. Which theatre shows "Mother Goose"?'
-</pre>
-
-Thus, you can use this variable directly to write a title:
-<pre class="codeinput">
-figure
-h1 = subplot(311);
-displaySoundWave(EPG_parameters,h1);
-h2 = subplot(312);
-displayAsymmetryIndex(EPG_parameters,h2);
-h3 = subplot(313);
-displaySpectrogram(EPG_parameters,h3);
-
-h1.Title.String     = allPhrases{1};
-h1.Title.FontSize   = 18;
-</pre>
-
-You can also save the phrase into the EPG_parameters to use it later on.
-
-<pre class="codeinput">
-
- EPG_parameters.Title = allPhrases{1};
-
- </pre>
-
-
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_17.png)
-
-
-This is useful when you are batch-processing a large number of phrases.
-
-<a name="Palatogram"/>
-<h2>Display of the Palatogram</h2>
-</a>
-
-To visualise the palatograms, there are several options. If you are interested in a particular time point, you can pass the number as a second input argument to the function displayPalatogram:
-
-<pre class="codeinput">
-displayPalatogram(EPG_parameters,1);
-</pre>
-
-![Palatogram1](Figures/Manual_LabToTextGrid2_09.png)
-
-
-Again, it is possible to have several plots in a single figure using handles:
-
-<pre class="codeinput">
-figure
-h1 = subplot(131);
-h2 = subplot(132);
-h3 = subplot(133);
-displayPalatogram(EPG_parameters,1,h1);
-displayPalatogram(EPG_parameters,20,h2);
-displayPalatogram(EPG_parameters,388,h3);
-</pre>
-
-
-![Palatogram1](Figures/Manual_LabToTextGrid2_08B.png)
-
-The activation is colour coded: white is used when electrodes on both sides are activated simultaneously. When only one side is activated, the electrode is displayed on cyan or magenta.
-
-To visualise the cumulative activation over all time points, there are two options. First, is the accumulation of all activations:
-
-<pre class="codeinput">
-displayPalatogram(EPG_parameters,-1);
-</pre>
-
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_12.png)
-
-Second, is the accumulation of only the asymmetric activations, that is, the symmetric cases are discarded:
-
-<pre class="codeinput">
-displayPalatogram(EPG_parameters,-2);
-</pre>
-
-![Audio with asymmetry](Figures/Manual_LabToTextGrid2_11.png)
-
-Finally, to visualise all activations sequentially, use the second argument with value -3:
-
-<pre class="codeinput">
-displayPalatogram(EPG_parameters,-3);
-</pre>
-
-
-![Audio with asymmetry](Figures/PalatogramAnimation.gif)
-
-
-
-<a name="Animations"/>
-<h2>Videos and Animations</h2>
-</a>
-
-The most complete visualisation of a phrase is when you can see in a single window the sound wave,  spectrogram, palatogram and a small window of the sound wave with its corresponding Fourier transform. This can be obtained with the function "visualisePalatography". As before, you will need the variable EPG_parameters as input argument. If you want to display the phrase as title of the figure, you will need to save it into EPG_parameters before you call the function:
-
-<pre class="codeinput">
-EPG_parameters.Title = allPhrases{1};
-visualisePalatography(EPG_parameters);
-</pre>
-
-
-If you call this function with a single argument, it will display the data in the screen as shown below.
-
-![Video Window](Figures/visualisePalatography_1.png)
-
-If you want to save as a video, you will need to use a second input argument with the desired name, e.g. "test.avi":
-
-<pre class="codeinput">
-visualisePalatography(EPG_parameters,'test.avi');
-</pre>
-
-This will save the animation in 3 files, the name will be appended "1", "2" and "3". The first one is saved with sound, HOWEVER, there is great variability into saving videos, and these not always work, particularly if you save on Windows and try to play in Mac or vice-versa. For best results, try to display with VLC.
-
-
-<img src="Figures/test_1.png" width="300" height="300" />
-
-The second is saved without sound and is best displayed with QuickTime.
-
-
-<img src="Figures/test_2.png" width="300" height="300" />
-
-
-The third one is an animated GIF and can be used on websites and presentations without much trouble.
-
-![Video Window](Figures/test_3.gif)
-
-
-<p>
+<h3> Display </h3>
+<p> 
 </p>
+<pre class="codeinput">
+jet2=jet;
+jet2(1,:) =0;
+for k = 1:numPhonemes
+ 
+    figure(1)
+    imagesc(sum(avPhoneme_tot{k,2},3));colorbar
+    colormap(jet2)
+    %  title(strcat('msak: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
+    combinedTitle{1}    = strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']');
+    combinedTitle{2}    = strcat('Total Asym:',32,num2str(avPhoneme_tot{k,3}),32,'/',32,num2str(avPhoneme_tot{k,4}));
+    combinedTitle{3}    = strcat('Front Asym:',32,num2str(avPhoneme_tot{k,5}),32,'/',32,num2str(avPhoneme_tot{k,6}));
+    combinedTitle{4}    = strcat('Back  Asym:',32,num2str(avPhoneme_tot{k,7}),32,'/',32,num2str(avPhoneme_tot{k,8}));
+    
+    title(combinedTitle,'fontsize',12)
+    %  title(strcat('fsew: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
+    axis off
+    
+    %  filename=strcat('msak_sum_',avPhoneme_tot{k,1});
+    filename=strcat(speaker,'_sum_',avPhoneme_tot{k,1});
+    set(gcf,'color','w')
+    set(gcf,'PaperPositionMode','auto')
+    set(gcf,'InvertHardcopy','off')
+    print('-djpeg','-r100',filename)
+    
+    
+    figure(2)
+    montage(avPhoneme_tot{k,2}./(repmat(max(max(avPhoneme_tot{k,2})),[300 240 1])))
+    colormap(jet2)
+    %  title(strcat('msak: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
+    title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(avPhoneme_tot{k,3}),'/',num2str(avPhoneme_tot{k,4})),'fontsize',15)
+    drawnow
+    pause(0.5)
+    
+    %  filename=strcat('msak_montage_',avPhoneme_tot{k,1});
+    filename=strcat(speaker,'_montage_',avPhoneme_tot{k,1});
+    set(gcf,'color','w')
+    set(gcf,'PaperPositionMode','auto')
+    set(gcf,'InvertHardcopy','off')
+    print('-djpeg','-r100',filename)
+    
+    %sum([sum(sum(avPhoneme_d(:,1:120,:))) sum(sum(avPhoneme_d(:,121:240,:)))],3)/sum(avPhoneme_d(:))
+end
+
+</pre>
+<br/>
+
+
+<h3>  </h3>
+<p> 
+</p>
+<pre class="codeinput">
+ 
+</pre>
+<br/>
+
+
+<h3>  </h3>
+<p> 
+</p>
+<pre class="codeinput">
+ 
+</pre>
+<br/>
 
 
 
+<img src="Figures/fsew_n4.png" width="500" height="300" />
 
 
 
-
-<p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div>
