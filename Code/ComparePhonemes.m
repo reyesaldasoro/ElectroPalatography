@@ -127,3 +127,26 @@ for k = 1:numPhonemes
     
     %sum([sum(sum(avPhoneme_d(:,1:120,:))) sum(sum(avPhoneme_d(:,121:240,:)))],3)/sum(avPhoneme_d(:))
 end
+%% Calculations per Phoneme
+% If it is of interest to calculate the asymmetry (or any other parameter) not from
+% the accummulation of the occurrences, this is possible in the following way. The
+% data has been stored in avPhoneme_tot, per phoneme, per occurrence in column 2. 
+
+
+k=1;
+
+activationPerOccurence          = squeeze(sum(sum(avPhoneme_tot{k,2})));
+frontActivationPerOccurence     = squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
+backActivationPerOccurence      = squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,:,:))));
+
+totalAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))./activationPerOccurence           squeeze(sum(sum(avPhoneme_tot{k,2}(:,121:240,:))))./activationPerOccurence]);
+frontAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:))))./frontActivationPerOccurence      squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:))))./frontActivationPerOccurence]);
+backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:))))./backActivationPerOccurence    squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:))))./backActivationPerOccurence]);
+  
+%%
+% In this way, each phoneme has the occurrence analysed.
+
+plot(totalAsymmetryPerOccurence(:,1),'b-o');grid on
+axis tight
+title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
+

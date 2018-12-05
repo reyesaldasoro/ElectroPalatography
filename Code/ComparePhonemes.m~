@@ -68,12 +68,15 @@ end
 %% Display
 % Basic display can be done in three ways:
 % 1) Displaying one of the occurrences of the phoneme:
-     sum(avPhoneme_tot{k,2},3)
+    figure(1)
+     imagesc(avPhoneme_tot{1,2}(:,:,1))
 
 % 2)a projection of all the occurrences of the phoneme and this is done by adding them, 
-     sum(avPhoneme_tot{k,2},3)
+    figure(2)
+     imagesc(sum(avPhoneme_tot{1,2},3))
 % 3) The other is a montage of all the cases:
-      montage(avPhoneme_tot{k,2}./(repmat(max(max(avPhoneme_tot{k,2})),[300 240 1])))
+    figure(3)
+      montage(avPhoneme_tot{1,2}./(repmat(max(max(avPhoneme_tot{1,2})),[300 240 1])))
 % Since there may be longer or shorter occurrences, the number in each occurence
 % needs to be 
 
@@ -124,3 +127,21 @@ for k = 1:numPhonemes
     
     %sum([sum(sum(avPhoneme_d(:,1:120,:))) sum(sum(avPhoneme_d(:,121:240,:)))],3)/sum(avPhoneme_d(:))
 end
+%% Calculations per Phoneme
+% If it is of interest to calculate the asymmetry (or any other parameter) not from
+% the accummulation of the occurrences, this is possible in the following way. The
+% data has been stored in avPhoneme_tot, per phoneme, per occurrence in column 2. 
+
+
+k=1;
+
+activationPerOccurence          = squeeze(sum(sum(avPhoneme_tot{k,2})));
+frontActivationPerOccurence     = squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
+backActivationPerOccurence      = squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,:,:))));
+
+totalAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))./activationPerOccurence           squeeze(sum(avPhoneme_tot{k,2}(:,121:240,:)))./activationPerOccurence]);
+frontAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:))))./frontActivationPerOccurence      squeeze(sum(avPhoneme_tot{k,2}(1:150,121:240,:)))./frontActivationPerOccurence]);
+backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:))))./backActivationPerOccurence    squeeze(sum(avPhoneme_tot{k,2}(151:300,121:240,:)))./backActivationPerOccurence]);
+  
+
+
