@@ -135,8 +135,47 @@ end
 
 
 <h3> Display </h3>
-<p> 
+<p>  Basic display can be done in three ways:
+ 1) Displaying one of the occurrences of the phoneme:
 </p>
+<pre class="codeinput">
+figure(1)
+     imagesc(avPhoneme_tot{1,2}(:,:,1))
+</pre>
+
+<img src="Figures/One_occurrence.png" width="500" height="300" />
+
+
+
+<p> 
+ 2)a projection of all the occurrences of the phoneme and this is done by adding them, 
+</p>
+<pre class="codeinput">
+figure(2)
+     imagesc(sum(avPhoneme_tot{1,2},3))
+</pre>
+
+
+<img src="Figures/Accummulated_occurrences.png" width="500" height="300" />
+
+
+<p> 
+ 3) The other is a montage of all the cases:
+</p>
+<pre class="codeinput">
+figure(3)
+      montage(avPhoneme_tot{1,2}./(repmat(max(max(avPhoneme_tot{1,2})),[300 240 1])))
+
+</pre>
+<p> 
+Since there may be longer or shorter occurrences, the number in each occurence
+ needs to be 
+</p>
+
+<img src="Figures/Montage_occurrences.png" width="500" height="300" />
+
+<h3> Batch Display </h3>
+
 <pre class="codeinput">
 jet2=jet;
 jet2(1,:) =0;
@@ -201,6 +240,9 @@ end
  
 </pre>
 <br/>
+
+
+
 
 
 
