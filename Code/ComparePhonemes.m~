@@ -24,10 +24,7 @@ numPhonemes     = size(listPhonemes,2);
 
 %% initialise the cell where results will be stored
 % All results will be stored in a cell, phoneme names on the first column, the
-% palatograms for each phoneme per occurrence in the second, then the measurements of
-% asymmetry in the columns 3-8. Notice that the size of the palatograms will be
-% different depending on how many times and how long each time occurs.
-
+% palatograms for
 avPhoneme_tot{numPhonemes,8}=[];
 for count_phoneme = 1:numPhonemes
     avPhoneme_tot{count_phoneme,1} = listPhonemes{count_phoneme};
@@ -35,14 +32,10 @@ for count_phoneme = 1:numPhonemes
 end
 %% calculate all the occurrences per phrase / per phoneme
 for k=1:numPhrases
-    % iterate over the phrases, it is assumed that the files were previously
-    % calculated and save as MATLAB, but these can also be calculated from .wav,
-    % .epg, .TextGrid/lab
+    % iterate over the
     disp(dir0(k).name)
     load(strcat(baseDir,dir0(k).name));
     for count_phoneme = 1:size(listPhonemes,2)
-        % Iterate now over the phonemes, this is very quick as the slow part is the
-        % calculation of EPG_parameters
         avPhoneme_tot{count_phoneme,2} = extract_Phoneme_EPG(EPG_parameters,listPhonemes{count_phoneme},avPhoneme_tot{count_phoneme,2});
     end
 end
