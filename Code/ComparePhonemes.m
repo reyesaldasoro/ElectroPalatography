@@ -1,16 +1,17 @@
 clear all
+%% Select the speaker, 
+% In our example there are 2 cases, msak and fsew, this will select the folder where
+% each is stored
+
+%speaker     = 'msak';
+speaker     = 'fsew';
+
 %% Select the base folder where the files (a number of files) is stored
 if strcmp(filesep,'\')
     baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
 else
     baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
 end
-%% Select the speaker, 
-% In our example there are 2 cases, msak and fsew, this will select the folder where
-% each is stored
-
-speaker     = 'msak';
-%speaker     = 'fsew';
 
 %% Read the folder and determine the number of phrases (i.e. files)
 dir0        = dir(strcat(baseDir,'*.mat'));
@@ -31,7 +32,6 @@ numPhonemes     = size(listPhonemes,2);
 avPhoneme_tot{numPhonemes,8}=[];
 for count_phoneme = 1:numPhonemes
     avPhoneme_tot{count_phoneme,1} = listPhonemes{count_phoneme};
-    %avPhoneme_tot{count_phoneme,2} =[];
 end
 %% calculate all the occurrences per phrase / per phoneme
 for k=1:numPhrases
@@ -66,6 +66,22 @@ end
 
 
 %% Display
+% Basic display can be done in three ways:
+% 1) Displaying one of the occurrences of the phoneme:
+    figure(1)
+     imagesc(avPhoneme_tot{1,2}(:,:,1))
+
+% 2)a projection of all the occurrences of the phoneme and this is done by adding them, 
+    figure(2)
+     imagesc(sum(avPhoneme_tot{1,2},3))
+% 3) The other is a montage of all the cases:
+    figure(3)
+      montage(avPhoneme_tot{1,2}./(repmat(max(max(avPhoneme_tot{1,2})),[300 240 1])))
+% Since there may be longer or shorter occurrences, the number in each occurence
+% needs to be 
+
+
+%%
 jet2=jet;
 jet2(1,:) =0;
 

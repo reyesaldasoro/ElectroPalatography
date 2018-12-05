@@ -1,16 +1,17 @@
 clear all
+%% Select the speaker, 
+% In our example there are 2 cases, msak and fsew, this will select the folder where
+% each is stored
+
+%speaker     = 'msak';
+speaker     = 'fsew';
+
 %% Select the base folder where the files (a number of files) is stored
 if strcmp(filesep,'\')
     baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
 else
     baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
 end
-%% Select the speaker, 
-% In our example there are 2 cases, msak and fsew, this will select the folder where
-% each is stored
-
-speaker     = 'msak';
-%speaker     = 'fsew';
 
 %% Read the folder and determine the number of phrases (i.e. files)
 dir0        = dir(strcat(baseDir,'*.mat'));
@@ -24,18 +25,24 @@ numPhonemes     = size(listPhonemes,2);
 
 %% initialise the cell where results will be stored
 % All results will be stored in a cell, phoneme names on the first column, the
-% palatograms for
+% palatograms for each phoneme per occurrence in the second, then the measurements of
+% asymmetry in the columns 3-8. Notice that the size of the palatograms will be
+% different depending on how many times and how long each time occurs.
+
 avPhoneme_tot{numPhonemes,8}=[];
 for count_phoneme = 1:numPhonemes
     avPhoneme_tot{count_phoneme,1} = listPhonemes{count_phoneme};
-    %avPhoneme_tot{count_phoneme,2} =[];
 end
 %% calculate all the occurrences per phrase / per phoneme
 for k=1:numPhrases
-    % iterate over the
+    % iterate over the phrases, it is assumed that the files were previously
+    % calculated and save as MATLAB, but these can also be calculated from .wav,
+    % .epg, .TextGrid/lab
     disp(dir0(k).name)
     load(strcat(baseDir,dir0(k).name));
     for count_phoneme = 1:size(listPhonemes,2)
+        % Iterate now over the phonemes, this is very quick as the slow part is the
+        % calculation of EPG_parameters
         avPhoneme_tot{count_phoneme,2} = extract_Phoneme_EPG(EPG_parameters,listPhonemes{count_phoneme},avPhoneme_tot{count_phoneme,2});
     end
 end
@@ -59,6 +66,19 @@ end
 
 
 %% Display
+% Basic display can be done in three ways:
+% 1) Displaying one of the occurrences of the phoneme:
+     sum(avPhoneme_tot{k,2},3)
+
+% 2)a projection of all the occurrences of the phoneme and this is done by adding them, 
+     sum(avPhoneme_tot{k,2},3)
+% 3) The other is a montage of all the cases:
+      montage(avPhoneme_tot{k,2}./(repmat(max(max(avPhoneme_tot{k,2})),[300 240 1])))
+% Since there may be longer or shorter occurrences, the number in each occurence
+% needs to be 
+
+
+%%
 jet2=jet;
 jet2(1,:) =0;
 
