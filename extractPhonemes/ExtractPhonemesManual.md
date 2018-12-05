@@ -254,7 +254,7 @@ backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1
 </p>
 
 <pre class="codeinput">
-<img src="Figures/asymmetry_n.png" width="600" />
+<img src="Figures/asymmetry_n.png" width="800" />
 
 
 <img src="Figures/Montage_n.png" width="500"  />
