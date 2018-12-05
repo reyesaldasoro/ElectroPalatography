@@ -6,9 +6,9 @@ clear all
 speaker     = 'msak';
 %speaker     = 'fsew';
 if strcmp(filesep,'\')
-    baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1\');
+    baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
 else
-    baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled',speaker,'0_v1.1\');
+    baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
 end
 
 dir0        = dir(strcat(baseDir,'*.mat'));
@@ -28,7 +28,7 @@ for k=1:numPhrases
     disp(dir0(k).name)
     load(strcat(baseDir,dir0(k).name));
     for count_phoneme = 1:size(listPhonemes,2)
-        avPhoneme_tot{count_phoneme,2} = extract_Phoneme_EPG_2018_11_28(EPG_parameters,listPhonemes{count_phoneme},avPhoneme_tot{count_phoneme,2});
+        avPhoneme_tot{count_phoneme,2} = extract_Phoneme_EPG(EPG_parameters,listPhonemes{count_phoneme},avPhoneme_tot{count_phoneme,2});
     end
 end
 
