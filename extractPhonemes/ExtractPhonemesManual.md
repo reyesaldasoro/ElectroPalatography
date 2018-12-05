@@ -1,24 +1,8 @@
-# ElectroPalatography
-A repository of useful Matlab routines that can be used to convert, analyse and display file of  Phonetics and ElectroPalatography.
+# Compare Phonemes
 
-<img src="Figures/test_3.gif" width="500" height="300" />
+Comparison of the Palatograms of different Phonemes  in a series of phrases.
 
-##### Table of Contents  
-
-[Convert LAB format to TextGrid Format](#LabTextGrid)  
-[Convert LAB or TextGrid to a MATLAB Cell](#LABTextGridCell)   
-[Read the audio file](#readAudioFile)   
-[Read the ElectroPalatography data](#readPalatogram)   
-[Short-Time Fourier Analysis](#STFA)   
-[Visualisation](#Visualisation)   
-[Display audio signal with Phonemes](#displaySoundWave)   
-[Display of the asymmetry index](#displayAsymmetryIndex)   
-[Display of the Spectrogram](#Spectrogram)   
-[Add Titles to the Plots](#Titles)   
-[Display of the Palatogram](#Palatogram)   
-[Videos and Animations](#Animations)   
-
-
+<img src="Figures/msak_d3.png" width="500" height="300" />
 
 
 <h2>Reference</h2>
@@ -31,19 +15,22 @@ Verhoeven, J., Miller, N. R.,  & Reyes-Aldasoro, C. C. (2018). Analysis of the s
 
 
 <a name="LabTextGrid"/>
-<h2>Convert LAB format to TextGrid Format</h2>
+<h2>Description of ComparePhonemes.m</h2>
 </a>
 
 
 
-<p>In experiments of phonetics, there are different formats in which the phonemes can be segmented. This is typically done on a small phrase such as "the chalk, the soup, the sugar". There are different formats in which these are recorded, one of them is a file with extension .lab (for labels) which has a simple format with start time-stop time-phoneme:</p>
+<p>This file takes as input a folder where there are a number of phrases and calculates the palatograms 
+     for each occurrence.
+</p>
 
+<h2>Select the base folder where the files (a number of files) is stored</h2>
 <pre class="codeinput">
-0 0.25 sil
-0.25 0.28 breath
-0.28 0.35 sil
-0.35 0.42 dh
-0.42 0.5 i
+if strcmp(filesep,'\')
+    baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
+else
+    baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
+end
 </pre>
 
 <p>See for instance the data base of MOCHA TIMIT (<a href="http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html">http://www.cstr.ed.ac.uk/research/projects/artic/mocha.html</a>)</p>
