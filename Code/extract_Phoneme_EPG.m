@@ -42,7 +42,7 @@ elseif isfile(dataIn)
     if strcmp(dataIn(end-2:end),'mat')
         % 2.a) where there is one .mat file with everything calculated
         load (dataIn,'EPG_parameters');
-        avPhoneme               = extract_Phoneme_EPG_2018_11_28(EPG_parameters,desiredPhoneme,avPhoneme);
+        avPhoneme               = extract_Phoneme_EPG(EPG_parameters,desiredPhoneme,avPhoneme);
     else
         % 2.b) a file location where there are 3 files .epg, .wav, .TextGrid
         % find the last . to determine the extensions
@@ -58,7 +58,7 @@ elseif isfile(dataIn)
         
         %EPG_parameters.Phonemes = add_Phonation_to_Phonemes(EPG_parameters.Phonemes);
         
-        avPhoneme               = extract_Phoneme_EPG_2018_11_28(EPG_parameters,desiredPhoneme,avPhoneme);
+        avPhoneme               = extract_Phoneme_EPG(EPG_parameters,desiredPhoneme,avPhoneme);
         
     end
     
@@ -94,7 +94,7 @@ elseif isfolder(dataIn)
         end
 %%
         save(currentMAT_File,'EPG_parameters')
-        avPhoneme               = extract_Phoneme_EPG_2018_11_28(EPG_parameters,desiredPhoneme,avPhoneme);
+        avPhoneme               = extract_Phoneme_EPG(EPG_parameters,desiredPhoneme,avPhoneme);
     
         %imagesc(avPhoneme)
         %drawnow;
