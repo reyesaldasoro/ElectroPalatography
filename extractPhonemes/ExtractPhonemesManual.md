@@ -277,10 +277,19 @@ backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1
 </p>
 
 <pre class="codeinput">
+
+plot(totalAsymmetryPerOccurence(:,1),'b-o');grid on
+axis tight
+title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
+</pre>
+
+
 <img src="Figures/asymmetry_n.png" width="800" />
-
-
 <img src="Figures/Montage_n.png" width="500"  />
 
+<p>
+ Alternatively, the same can be obtained through the index previously
+ calculated and stored in avPhoneme_tot like this:
+</p>
 
-</pre>
+<img src="Figures/asymmetry_2_n.png" width="800" />

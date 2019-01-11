@@ -164,8 +164,12 @@ backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1
   
 %%
 % In this way, each phoneme has the occurrence analysed.
-
 plot(totalAsymmetryPerOccurence(:,1),'b-o');grid on
 axis tight
 title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
-
+%%
+% Alternatively, the same can be obtained through the index previously
+% calculated and stored in avPhoneme_tot like this:
+plot(avPhoneme_tot{1,9},'b-o');grid on
+axis tight
+title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
