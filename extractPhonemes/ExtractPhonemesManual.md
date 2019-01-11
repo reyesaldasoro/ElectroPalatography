@@ -285,7 +285,7 @@ title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
 
 
 <img src="Figures/asymmetry_n.png" width="800" />
-<img src="Figures/Montage_n.png" width="500"  />
+
 
 <p>
  Alternatively, the same can be obtained through the index previously
@@ -293,3 +293,10 @@ title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,']'),'fontsize',15)
 </p>
 
 <img src="Figures/asymmetry_2_n.png" width="800" />
+
+<p>
+Another way to look at the data is a montage of all the phoneme occurrences.
+</p>
+
+
+<img src="Figures/Montage_n.png" width="500"  />
