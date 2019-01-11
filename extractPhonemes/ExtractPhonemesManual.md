@@ -51,12 +51,12 @@ end
 <h3>  </h3>
 <p> Read the folder and determine the number of phrases (i.e. files)
 </p>
-<pre class="codeinput">
+
 ```
 dir0        = dir(strcat(baseDir, '*.mat'));
 numPhrases  = size(dir0,1);
 ```
-</pre>
+
 <br/>
 
 
