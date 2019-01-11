@@ -135,19 +135,23 @@ a) calculating  the
 
 
 <pre class="codeinput">
- for k = 1:numPhonemes
+for k = 1:numPhonemes
     totalActivation     = sum(avPhoneme_tot{k,2}(:));
     frontActivation     = sum(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
     backActivation      = sum(sum(sum(avPhoneme_tot{k,2}(151:300,:,:))));
     totalAsymmetry      = sum([sum(sum(avPhoneme_tot{k,2}(:,1:120,:)))          sum(sum(avPhoneme_tot{k,2}(:,121:240,:)))],3)/totalActivation;
     frontAsymmetry      = sum([sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:)))      sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:)))],3)/frontActivation;
     backAsymmetry       = sum([sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:)))    sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:)))],3)/backActivation;
+    totalAsymmetry2     = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))    squeeze( sum(sum(avPhoneme_tot{k,2}(:,121:240,:))))]);
+    totalAsymmetry3     = (-totalAsymmetry2(2:end,1)+totalAsymmetry2(2:end,2))./(totalAsymmetry2(2:end,1)+totalAsymmetry2(2:end,2));
+
     avPhoneme_tot{k,3}  = totalAsymmetry(1);
     avPhoneme_tot{k,4}  = totalAsymmetry(2);
     avPhoneme_tot{k,5}  = frontAsymmetry(1);
     avPhoneme_tot{k,6}  = frontAsymmetry(2);
     avPhoneme_tot{k,7}  = backAsymmetry(1);
     avPhoneme_tot{k,8}  = backAsymmetry(2);
+    avPhoneme_tot{k,9} = totalAsymmetry3;
 end
 </pre>
 <br/>
