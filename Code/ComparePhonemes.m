@@ -48,7 +48,22 @@ for k=1:numPhrases
 end
 
 %% Calculate asymmetries
-
+% There are many ways to calculate asymmetry:
+%%
+% a) calculating  the
+% occurrences  of  the  left/right  sides  of  the  palatogram  and
+% dividing  by  the total number of occurrences.  Thus a perfectly
+% symmetrical case would have a result 0.5/0.5 whilst a perfectly
+% asymmetrical  case  would  be  either  1/0  or  0/1. These values are
+% stored in columns 3 and 4 of avPhoneme_tot.
+%%
+% b) calculating  the
+% occurrences  of  the  left/right  sides  of  the  palatogram  and then  
+% calculating (number of right - number of left) / (number of right - number of left) 
+% Thus a perfectly  symmetrical case would have a result 0 whilst a perfectly
+% asymmetrical  case  would  be  either  +1  or  -1.  This values, per phoneme occurrence are
+% stored in column 9 of avPhoneme_tot.
+%%
 for k = 1:numPhonemes
     totalActivation     = sum(avPhoneme_tot{k,2}(:));
     frontActivation     = sum(sum(sum(avPhoneme_tot{k,2}(1:150,:,:))));
@@ -57,7 +72,7 @@ for k = 1:numPhonemes
     frontAsymmetry      = sum([sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:)))      sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:)))],3)/frontActivation;
     backAsymmetry       = sum([sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:)))    sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:)))],3)/backActivation;
     totalAsymmetry2     = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))    squeeze( sum(sum(avPhoneme_tot{k,2}(:,121:240,:))))]);
-    totalAsymmetry3     = (totalAsymmetry2(2:end,1)-totalAsymmetry2(2:end,2))./(totalAsymmetry2(2:end,1)+totalAsymmetry2(2:end,2));
+    totalAsymmetry3     = (-totalAsymmetry2(2:end,1)+totalAsymmetry2(2:end,2))./(totalAsymmetry2(2:end,1)+totalAsymmetry2(2:end,2));
     
     avPhoneme_tot{k,3}  = totalAsymmetry(1);
     avPhoneme_tot{k,4}  = totalAsymmetry(2);
@@ -82,7 +97,7 @@ end
     figure(3)
       montage(avPhoneme_tot{1,2}./(repmat(max(max(avPhoneme_tot{1,2})),[300 240 1])))
 % Since there may be longer or shorter occurrences, the number in each occurence
-% needs to be 
+% needs to be considered.
 
 
 %%
