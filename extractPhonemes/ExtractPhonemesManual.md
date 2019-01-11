@@ -60,7 +60,7 @@ numPhrases  = size(dir0,1);
 <br/>
 
 
-<h3>  define phonemes of interest in a list</h3>
+<h3>Define phonemes of interest in a list</h3>
 <p> This is a list of the phonemes of interest, more or less can be defined by changing
 % this line
 </p>
@@ -73,7 +73,7 @@ numPhonemes     = size(listPhonemes,2);
 <br/>
 
 
-<h3> initialise the cell where results will be stored </h3>
+<h3>Initialise the cell where results will be stored </h3>
 <p>  All results will be stored in a cell, phoneme names on the first column, the
  palatograms for each phoneme per occurrence in the second, then the measurements of
  asymmetry in the columns 3-8. Notice that the size of the palatograms will be
@@ -90,10 +90,7 @@ end
 
 <img src="Figures/avPhoneme_tot.png" width="500" height="300" />
 
-
-Calculate all the occurrences per phrase / per phoneme
-
-<h3>  calculate all the occurrences per phrase / per phoneme</h3>
+<h3>Calculate all the occurrences per phrase / per phoneme</h3>
 <p>
 </p>
 <pre class="codeinput">
@@ -115,7 +112,28 @@ end
 
 <h3> Calculate asymmetries </h3>
 <p>
+There are many ways to calculate asymmetry:
+
 </p>
+<p>
+a) calculating  the
+ occurrences  of  the  left/right  sides  of  the  palatogram  and
+ dividing  by  the total number of occurrences.  Thus a perfectly
+ symmetrical case would have a result 0.5/0.5 whilst a perfectly
+ asymmetrical  case  would  be  either  1/0  or  0/1. These values are
+ stored in columns 3 and 4 of avPhoneme_tot.
+
+ </p>
+ <p>
+ b) calculating  the
+ occurrences  of  the  left/right  sides  of  the  palatogram  and then  
+ calculating (number of right - number of left) / (number of right - number of left)
+ Thus a perfectly  symmetrical case would have a result 0 whilst a perfectly
+ asymmetrical  case  would  be  either  +1  or  -1.  This values, per phoneme occurrence are stored in column 9 of avPhoneme_tot.
+
+</p>
+
+
 <pre class="codeinput">
  for k = 1:numPhonemes
     totalActivation     = sum(avPhoneme_tot{k,2}(:));
