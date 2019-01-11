@@ -18,7 +18,7 @@ Verhoeven, J., Miller, N. R.,  & Reyes-Aldasoro, C. C. (2018). Analysis of the s
 <h2>Description of ComparePhonemes.m</h2>
 </a>
 
-<p>This file takes as input a folder where there are a number of phrases and calculates the palatograms 
+<p>This file takes as input a folder where there are a number of phrases and calculates the palatograms
      for each occurrence.
 </p>
 
@@ -52,9 +52,10 @@ end
 <p> Read the folder and determine the number of phrases (i.e. files)
 </p>
 <pre class="codeinput">
- dir0        = dir(strcat(baseDir,'*.mat'));
+```
+dir0        = dir(strcat(baseDir, '*.mat'));
 numPhrases  = size(dir0,1);
-
+```
 </pre>
 <br/>
 
@@ -90,10 +91,10 @@ end
 <img src="Figures/avPhoneme_tot.png" width="500" height="300" />
 
 
-calculate all the occurrences per phrase / per phoneme
+Calculate all the occurrences per phrase / per phoneme
 
 <h3>  calculate all the occurrences per phrase / per phoneme</h3>
-<p> 
+<p>
 </p>
 <pre class="codeinput">
  for k=1:numPhrases
@@ -113,7 +114,7 @@ end
 
 
 <h3> Calculate asymmetries </h3>
-<p> 
+<p>
 </p>
 <pre class="codeinput">
  for k = 1:numPhonemes
@@ -147,8 +148,8 @@ figure(1)
 
 
 
-<p> 
- 2)a projection of all the occurrences of the phoneme and this is done by adding them, 
+<p>
+ 2)a projection of all the occurrences of the phoneme and this is done by adding them,
 </p>
 <pre class="codeinput">
 figure(2)
@@ -159,7 +160,7 @@ figure(2)
 <img src="Figures/Accummulated_occurrences.png" width="500" height="300" />
 
 
-<p> 
+<p>
  3) The other is a montage of all the cases:
 </p>
 <pre class="codeinput">
@@ -167,23 +168,23 @@ figure(3)
       montage(avPhoneme_tot{1,2}./(repmat(max(max(avPhoneme_tot{1,2})),[300 240 1])))
 
 </pre>
-<p> 
+<p>
 Since there may be longer or shorter occurrences, the number in each occurence
- needs to be 
+ needs to be
 </p>
 
 <img src="Figures/Montage_occurrences.png" width="500" height="300" />
 
 <h3> Batch Display </h3>
 <p>
-     To create figures for ALL the files in the folder, you can iterate over the number of Phonemes, and at 
+     To create figures for ALL the files in the folder, you can iterate over the number of Phonemes, and at
      the same time, calculate the measurements of asymmetry:
      </p>
 <pre class="codeinput">
 jet2=jet;
 jet2(1,:) =0;
 for k = 1:numPhonemes
- 
+
     figure(1)
     imagesc(sum(avPhoneme_tot{k,2},3));colorbar
     colormap(jet2)
@@ -192,19 +193,19 @@ for k = 1:numPhonemes
     combinedTitle{2}    = strcat('Total Asym:',32,num2str(avPhoneme_tot{k,3}),32,'/',32,num2str(avPhoneme_tot{k,4}));
     combinedTitle{3}    = strcat('Front Asym:',32,num2str(avPhoneme_tot{k,5}),32,'/',32,num2str(avPhoneme_tot{k,6}));
     combinedTitle{4}    = strcat('Back  Asym:',32,num2str(avPhoneme_tot{k,7}),32,'/',32,num2str(avPhoneme_tot{k,8}));
-    
+
     title(combinedTitle,'fontsize',12)
     %  title(strcat('fsew: [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(totalAsymmetry(1)),'/',num2str(totalAsymmetry(2))),'fontsize',15)
     axis off
-    
+
     %  filename=strcat('msak_sum_',avPhoneme_tot{k,1});
     filename=strcat(speaker,'_sum_',avPhoneme_tot{k,1});
     set(gcf,'color','w')
     set(gcf,'PaperPositionMode','auto')
     set(gcf,'InvertHardcopy','off')
     print('-djpeg','-r100',filename)
-    
-    
+
+
     figure(2)
     montage(avPhoneme_tot{k,2}./(repmat(max(max(avPhoneme_tot{k,2})),[300 240 1])))
     colormap(jet2)
@@ -212,14 +213,14 @@ for k = 1:numPhonemes
     title(strcat(speaker,': [',32,avPhoneme_tot{k,1},32,'], Asym:',num2str(avPhoneme_tot{k,3}),'/',num2str(avPhoneme_tot{k,4})),'fontsize',15)
     drawnow
     pause(0.5)
-    
+
     %  filename=strcat('msak_montage_',avPhoneme_tot{k,1});
     filename=strcat(speaker,'_montage_',avPhoneme_tot{k,1});
     set(gcf,'color','w')
     set(gcf,'PaperPositionMode','auto')
     set(gcf,'InvertHardcopy','off')
     print('-djpeg','-r100',filename)
-    
+
     %sum([sum(sum(avPhoneme_d(:,1:120,:))) sum(sum(avPhoneme_d(:,121:240,:)))],3)/sum(avPhoneme_d(:))
 end
 
@@ -233,7 +234,7 @@ end
 <h3> Calculations per Phoneme </h3>
 <p>   If it is of interest to calculate the asymmetry (or any other parameter) not from
  the accummulation of the occurrences, this is possible in the following way. The
- data has been stored in avPhoneme_tot, per phoneme, per occurrence in column 2. 
+ data has been stored in avPhoneme_tot, per phoneme, per occurrence in column 2.
 </p>
 <pre class="codeinput">
 
@@ -246,7 +247,7 @@ backActivationPerOccurence      = squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,:,:
 totalAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(:,1:120,:))))./activationPerOccurence           squeeze(sum(sum(avPhoneme_tot{k,2}(:,121:240,:))))./activationPerOccurence]);
 frontAsymmetryPerOccurence      = ([squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,1:120,:))))./frontActivationPerOccurence      squeeze(sum(sum(avPhoneme_tot{k,2}(1:150,121:240,:))))./frontActivationPerOccurence]);
 backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1:120,:))))./backActivationPerOccurence    squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,121:240,:))))./backActivationPerOccurence]);
-  
+
 </pre>
 
 <p>
@@ -259,13 +260,5 @@ backAsymmetryPerOccurence       = ([squeeze(sum(sum(avPhoneme_tot{k,2}(151:300,1
 
 <img src="Figures/Montage_n.png" width="500"  />
 
-  
+
 </pre>
-
-
-
-
-
-
-
-
