@@ -8,7 +8,7 @@ speaker     = 'fsew';
 
 %% Select the base folder where the files (a number of files) is stored
 if strcmp(filesep,'\')
-    baseDir     = strcat('D:\OneDrive - City, University of London\Acad\City_Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
+    baseDir     = strcat('D:\OneDrive - City, University of London\Acad\Research\JoVerhoeven\MOCHA_Relabelled\',speaker,'0_v1.1',filesep);
 else
     baseDir     = strcat('/Users/ccr22/OneDrive - City, University of London/Acad/Research/JoVerhoeven/MOCHA_Relabelled/',speaker,'0_v1.1',filesep);
 end
