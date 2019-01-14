@@ -76,8 +76,8 @@ numPhonemes     = size(listPhonemes,2);
 <h3>Initialise the cell where results will be stored </h3>
 <p>  All results will be stored in a cell, phoneme names on the first column, the
  palatograms for each phoneme per occurrence in the second, then the measurements of
- asymmetry in the columns 3-8. Notice that the size of the palatograms will be
- different depending on how many times and how long each time occurs.
+ asymmetry in the columns 3-8. Notice that the size (specifically the third dimension of the matrix as in 300 x 240 x N) of the palatograms will be
+ different depending on how many times each time phoneme occurs. The length of the phoneme will influence the values of each palatogram, see the display of a single palatogram below.
 
 </p>
 <pre class="codeinput">
@@ -179,7 +179,9 @@ figure(1)
 
 <img src="Figures/One_occurrence.png" width="500" height="300" />
 
-
+<p>
+The values of the palatogram (in this case up to a value of 7) depends on the contacts on each electrode, and this in turn is influenced by the length of the phoneme and the sampling rate of the palatography equipment.
+</p>
 
 <p>
  2)a projection of all the occurrences of the phoneme and this is done by adding them,
