@@ -194,7 +194,9 @@ figure(2)
 
 <img src="Figures/Accummulated_occurrences.png" width="500" height="300" />
 
-
+<p>
+In this case, the values correspond to the accummulation over time. Some electrodes are activated more than 1,600 times for this phoneme.
+</p>
 <p>
  3) The other is a montage of all the cases:
 </p>
@@ -204,8 +206,7 @@ figure(3)
 
 </pre>
 <p>
-Since there may be longer or shorter occurrences, the number in each occurence
- needs to be
+Since there may be longer or shorter occurrences, the numbers in each occurrence of the phonemes needs to be normalised, otherwise the values would show a stronger influence of the length of each occurrence than the actual occurrences. Thus the values now range between 0 and 1 and for each position of the montage, the maximum value will be 1.
 </p>
 
 <img src="Figures/Montage_occurrences.png" width="500" height="300" />
