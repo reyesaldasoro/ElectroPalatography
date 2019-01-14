@@ -88,7 +88,6 @@ end
 </pre>
 <br/>
 
-<img src="Figures/avPhoneme_tot.png" width="500" height="300" />
 
 <h3>Calculate all the occurrences per phrase / per phoneme</h3>
 <p>
@@ -107,7 +106,15 @@ end
     end
 end
 </pre>
+
 <br/>
+<img src="Figures/avPhoneme_tot.png" width="700" height="400" />
+
+<p>
+In the previous example we have analysed 15 phonemes (n,d,t,r, etc.) over a series of 69 sentences.  If a phoneme appears more than once in a sentence (or not at all), each occurrence is recorded. Once you run the code, the variable called ```av_Phoneme_tot ```
+ will contains several fields. The first column is the phoneme (n,d,t,r,ng,...) the second column contains a 3D matrix 300 x 240 x N, where N is the number of times the phoneme has occurred. So for this experiment, there are 110 'n', 54 'd', 95 't' and so on. The other columns have the asymmetry metrics. These metrics are calculated over all the occurrences of the phoneme, but if you want to extract a metric of a single phonemes you could do it per  occurrence, ``` av_Phoneme_tot{1,2}(:,:,1) ```   would recall the first occurrence of the phoneme 'n'.
+
+</p>
 
 
 <h3> Calculate asymmetries </h3>
