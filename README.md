@@ -22,11 +22,11 @@ A repository of useful Matlab routines that can be used to convert, analyse and 
 
 
 <h2>Reference</h2>
-
-If you find these routines useful, please cite as:
+This work has been published in the Journal of Imaging. If you find these routines useful, please cite as:
 
 <h3>
-Verhoeven, J., Miller, N. R.,  & Reyes-Aldasoro, C. C. (2018). Analysis of the symmetry of electrodes for Electropalatography with Cone Beam CT Scanning. In Medical Image Understanding and Analysis, Southampton, UK, 09-11 July 2018.
+Verhoeven, J., Miller, N. R., Daems, L, and Reyes-Aldasoro, C. C. Visualisation and Analysis of Speech Production with Electropalatography. J. Imaging 2019, 5(3), 40.
+https://www.mdpi.com/2313-433X/5/3/40
 </h3>
 
 
